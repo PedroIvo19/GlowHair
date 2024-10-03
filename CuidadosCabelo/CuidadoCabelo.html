@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowHair</title>
+    <link rel="stylesheet" href="CuidadoCabelo.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Cuidados para o Cabelo</a></li>
+                <li><a href="#">Tipos de Cabelo</a></li>
+                <li class="logo"><a href="#">Logo</a></li>
+                <li id="login-btn"><a href="./Cliente/cadastro-login.html">Login</a></li>
+                <li id="register-btn"><a href="./Cliente/cadastro-login.html">Registrar</a></li>
+                <li id="profile-btn" style="display: none;"><a href="./perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+     <!-- Seção Cuidados para o Cabelo -->
+     <section class="cuidados-cabelo">
+        <h1>Cuidados para o seu Cabelo</h1>
+        <div class="texto-container">
+            <p>Sejam lisos, cacheados, curtos, longos, coloridos, fracos, secos ou oleosos. Iremos te ajudar a mostrar produtos que irão limpar, nutrir, fortalecer, suavizar, reparar e proteger de acordo, especificamente, com o seu tipo de cabelo. Confira as varias marcas de shampoo, condicionador, óleo, leave-in, creme para tratamento e creme de pentear. E descubra que o produto certo para você.</p>
+        </div>
+
+        <!-- Retângulo de Filtro de Busca -->
+        <div class="filtro-busca">
+            <h2>Especificar minha necessidade</h2>
+
+            <!-- Seção Problema -->
+            <h3>Problema</h3>
+            <div class="botoes-problema">
+                <button>Pontas Danificadas</button>
+                <button>Cabelo Oleoso</button>
+                <button>Cabelo Embaraçado</button>
+                <button>Antipoluição</button>
+            </div>
+
+            <!-- Seção Tipo de Cabelo -->
+            <h3>Tipo de Cabelo</h3>
+            <div class="botoes-tipo-cabelo">
+                <button>Cabelo Normal</button>
+                <button>Cabelo Cacheado</button>
+                <button>Cabelo com Frizz</button>
+                <button>Cabelo Fino</button>
+                <button>Cabelo Longo</button>
+                <button>Cabelo Liso</button>
+                <button>Cabelo Seco</button>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- CARD DOS PRODUTOS -->
+    <div class="card">
+        <img src="../img/shampooSeda.avif" alt="Seda Shampoo">
+        <h2>SEDA</h2>
+        <p>Shampoo para força antiquebra com Mel e Aveia - 325ml</p>
+        <div class="rating">
+            <input value="5" name="rate" id="star5" type="radio">
+            <label title="text" for="star5"></label>
+            <input value="4" name="rate" id="star4" type="radio">
+            <label title="text" for="star4"></label>
+            <input value="3" name="rate" id="star3" type="radio" checked="">
+            <label title="text" for="star3"></label>
+            <input value="2" name="rate" id="star2" type="radio">
+            <label title="text" for="star2"></label>
+            <input value="1" name="rate" id="star1" type="radio">
+            <label title="text" for="star1"></label>
+          </div>
+        <a href="#" class="button">Visualizar Produto</a>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

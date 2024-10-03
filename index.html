@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowHair</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Cuidados para o Cabelo</a></li>
+                <li><a href="#">Tipos de Cabelo</a></li>
+                <li class="logo"><a href="#">Logo</a></li>
+                <li id="login-btn"><a href="./Cliente/cadastro-login.html">Login</a></li>
+                <li id="register-btn"><a href="./Cliente/cadastro-login.html">Registrar</a></li>
+                <li id="profile-btn" style="display: none;"><a href="./perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 id="Sobre">Sobre</h1>
+    <!-- Seção Sobre -->
+    <section class="sobre">
+        <div class="sobre-section">
+            <div class="image-container">
+                <img src="./img/cabelo-seco.jpg" alt="Imagem Sobre">
+            </div>
+            <div class="text-container">
+                <h2>Sobre o Projeto</h2>
+                <p>O projeto "GlowHair" foi criado com o objetivo de preencher uma lacuna existente no cuidado pessoal, especificamente relacionado à saúde e à estética capilar. Muitas pessoas enfrentam desafios diários ao tentarem entender seus próprios tipos de cabelo, identificar as melhores práticas de cuidado e, principalmente, encontrar produtos adequados que atendam às suas necessidades específicas. Além disso, o mercado de cosméticos e produtos capilares oferece uma infinidade de opções, o que pode gerar confusão e incerteza para quem não possui conhecimento especializado.</p>
+                <button class="btn">Saiba Mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova Seção -->
+    <section class="texto-imagem">
+        <div class="texto-imagem-content">
+            <div class="text-container">
+                <h2>Texto à Esquerda</h2>
+                <p>O projeto foi idealizado para atender tanto pessoas que já possuem uma rotina de cuidados capilares, quanto àquelas que estão começando a explorar esse universo, mas não sabem por onde começar. Ele busca oferecer não só soluções personalizadas, mas também um espaço acolhedor, onde as pessoas possam aprender, se identificar e se sentir mais confiantes em relação à própria imagem.
+
+                    Com a missão de transformar a relação das pessoas com seus cabelos, "GlowHair" promove a democratização do conhecimento sobre cuidados capilares, tornando-o acessível a todos e ajudando a construir uma jornada mais fácil e saudável para todos os tipos de cabelo.</p>
+                <button class="btn">Saiba Mais</button>
+            </div>
+            <div class="image-container">
+                <img src="./img/Produtos.jpg" alt="Imagem Adicional">
+            </div>
+        </div>
+    </section>
+    <br>
+
+
+    <div id="slider-wrapper">
+      <div class="inner-wrapper">
+        <input checked type="radio" name="slide" class="control" id="Slide1" />
+        <label for="Slide1" id="s1"></label>
+        <input type="radio" name="slide" class="control" id="Slide2" />
+        <label for="Slide2" id="s2"></label>
+        <input type="radio" name="slide" class="control" id="Slide3" />
+        <label for="Slide3" id="s3"></label>
+        <input type="radio" name="slide" class="control" id="Slide4" />
+        <label for="Slide4" id="s4"></label>
+        <div class="overflow-wrapper">
+          <a class="slide" href=""><img src="./img/PrimeiraImagemSlider.jpg" /></a>
+          <a class="slide" href=""><img src="./img/SegundaImagemSlider.jpeg" /></a>
+          <a class="slide" href=""><img src="./img/TerceiraImagemSlider.jpg" /></a>
+          <a class="slide" href=""><img src="./img/cabelo-danificado.jpg" /></a>
+        </div>
+      </div>
+    </div>
+
+
+   
+    <br>
+    <br>
+      <script src="scripts.js"></script>
+
+</body>
+</html>

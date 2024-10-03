@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="produto.css">
+</head>
+<body>
+    <!-- Botão de voltar -->
+    <button class="back-button" onclick="history.back()">
+        ← Voltar
+    </button>
+
+    <!-- Seção do produto -->
+    <div class="product-container">
+        <h1>Shampoo Seda</h1>
+        <p>Shampoo para força antiquebra com Mel e Aveia - 325ml. Esse produto é ideal para fortalecer os fios e reduzir a quebra, proporcionando maciez e brilho ao cabelo.</p>
+
+        <div class="product-content">
+            <img src="../img/shampooSeda.avif" alt="Imagem do Shampoo Seda" class="product-image">
+
+            <!-- Botão com duas seções: Benefícios e Como Usar -->
+            <div class="tab-container">
+                <button id="benefits" class="tab active" onclick="showContent('benefits')">Benefícios</button>
+                <button id="how-to-use" class="tab" onclick="showContent('how-to-use')">Como Usar</button>
+            </div>
+
+            <!-- Texto que muda conforme a seleção do botão -->
+            <div id="content-benefits" class="tab-content active">
+                <p>Este shampoo fortalece os fios, reduz a quebra, hidrata profundamente e deixa o cabelo macio e brilhante.</p>
+            </div>
+            <div id="content-how-to-use" class="tab-content">
+                <p>Aplique o shampoo nos cabelos molhados, massageie suavemente o couro cabeludo e depois enxágue completamente. Repita se necessário.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="produto.js"></script>
+</body>
+</html>
