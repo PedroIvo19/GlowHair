@@ -3,39 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Produto</title>
+    <title>Mascara Elseve Reparação Total</title>
     <link rel="stylesheet" href="produto.css">
 </head>
 <body>
     <!-- Botão de voltar -->
-    <button class="back-button" onclick="history.back()">
-        ← Voltar
-    </button>
+    <a href="../index.html"><button class="back-button">← Voltar</button></a>
 
-    <!-- Seção do produto -->
-    <div class="product-container">
-        <h1>Shampoo Seda</h1>
-        <p>Shampoo para força antiquebra com Mel e Aveia - 325ml. Esse produto é ideal para fortalecer os fios e reduzir a quebra, proporcionando maciez e brilho ao cabelo.</p>
+    <!-- Container principal -->
+    <div class="main-container">
+        <!-- Imagem do Produto -->
+        <div class="product-image">
+            <img src="../img/mascara-elseve.webp" alt="Máscara Elseve">
+        </div>
 
-        <div class="product-content">
-            <img src="../img/shampooSeda.avif" alt="Imagem do Shampoo Seda" class="product-image">
+        <!-- Informações do Produto -->
+<div class="product-info">
+    <h1>Máscara Elseve Reparação Total</h1>
+    <p class="description">
+        A Máscara Elseve Reparação Total é formulada para restaurar a vitalidade dos cabelos danificados. 
+        Com uma combinação de ingredientes poderosos, essa máscara age profundamente na fibra capilar, 
+        proporcionando nutrição intensa e um brilho radiante. Ideal para cabelos secos e quebradiços, 
+        esta máscara é um passo essencial na sua rotina de cuidados capilares.
+    </p>
 
-            <!-- Botão com duas seções: Benefícios e Como Usar -->
-            <div class="tab-container">
-                <button id="benefits" class="tab active" onclick="showContent('benefits')">Benefícios</button>
-                <button id="how-to-use" class="tab" onclick="showContent('how-to-use')">Como Usar</button>
+    <!-- Seção de Tabs -->
+    <div class="tabs">
+        <button class="tab-button active" id="benefits-btn">Benefícios</button>
+        <button class="tab-button" id="how-to-use-btn">Como Usar</button>
+    </div>
+
+    <!-- Conteúdo dos Tabs -->
+    <div class="tab-content active" id="benefits-content">
+        <h3>Benefícios:</h3>
+        <ul>
+            <li>Restaura cabelos danificados e ressecados.</li>
+            <li>Proporciona nutrição intensa e hidratação.</li>
+            <li>Reduz o frizz e melhora a maleabilidade.</li>
+            <li>Deixa os cabelos macios e brilhantes.</li>
+            <li>Fórmula enriquecida com ingredientes de alta performance.</li>
+        </ul>
+    </div>
+    <div class="tab-content hidden" id="how-to-use-content">
+        <h3>Como Usar:</h3>
+        <p>Para usar a máscara, siga estas etapas:</p>
+        <ol>
+            <li>Aplique nos cabelos molhados, após o shampoo.</li>
+            <li>Deixe agir por 5 minutos.</li>
+            <li>Enxágue abundantemente com água morna.</li>
+            <li>Use uma vez por semana ou conforme necessário.</li>
+        </ol>
+    </div>
+</div>
+
+
+    <!-- Seção de Avaliações -->
+    <div class="reviews-section">
+        <h2>Avaliações dos Consumidores</h2>
+        
+        <!-- Avaliação 1 -->
+        <div class="review-card">
+            <div class="review-details">
+                <strong>Luciana</strong><br>
+                <span>São Paulo</span><br>
+                <span>Age: 35 a 44</span>
             </div>
-
-            <!-- Texto que muda conforme a seleção do botão -->
-            <div id="content-benefits" class="tab-content active">
-                <p>Este shampoo fortalece os fios, reduz a quebra, hidrata profundamente e deixa o cabelo macio e brilhante.</p>
+            <div class="review-content">
+                <div class="review-header">
+                    <span class="stars">★★★★☆</span>
+                    <span class="review-date"> - 01/09/2023</span>
+                </div>
+                <h3>ADORO O SHAMPOO</h3>
+                <p>Eu adoro esse shampoo e uso há mais de 20 anos, porém não me adaptei a esse novo cheiro dele. Por favor, voltem ao cheirinho original dele.</p>
+                <div class="review-recommend">
+                    <span>👍 Sim, eu recomendo esse produto</span>
+                </div>
+                <div class="review-quality">
+                    <span>Qualidade do produto</span>
+                    <div class="quality-bar">
+                        <div class="quality-fill" style="width: 80%;"></div>
+                    </div>
+                    <span class="quality-score">4</span>
+                </div>
             </div>
-            <div id="content-how-to-use" class="tab-content">
-                <p>Aplique o shampoo nos cabelos molhados, massageie suavemente o couro cabeludo e depois enxágue completamente. Repita se necessário.</p>
+        </div>
+        
+        <!-- Avaliação 2 -->
+        <div class="review-card">
+            <div class="review-details">
+                <strong>Aline</strong><br>
+                <span>São Paulo</span><br>
+                <span>Age: 25 a 34</span>
+            </div>
+            <div class="review-content">
+                <div class="review-header">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-date"> - 08/06/2023</span>
+                </div>
+                <h3>AMO A FÓRMULA ANTIGA</h3>
+                <p>Essa nova fórmula deixa o cabelo amarelado, amo a fórmula antiga que deixava o cabelo platinado!</p>
+                <div class="review-recommend">
+                    <span>👍 Sim, eu recomendo esse produto</span>
+                </div>
+                <div class="review-quality">
+                    <span>Qualidade do produto</span>
+                    <div class="quality-bar">
+                        <div class="quality-fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="quality-score">5</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="produto.js"></script>
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>

@@ -134,18 +134,26 @@ a:hover {
 
 /*ESTRELAS AVALIAÇÃO*/
 .card {
-    width: 250px;
+    width: 250px; /* Largura fixa do card */
+    height: 350px; /* Altura fixa do card */
     padding: 20px;
     border-radius: 15px;
     background-color: #D2A48A; /* Cor de fundo semelhante ao da imagem */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo em coluna */
+    justify-content: space-between; /* Distribui o espaço entre o conteúdo */
 }
+
 .card img {
     width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
-    height: auto;
+    height: 100px; /* Defina uma altura fixa para a imagem */
+    object-fit: contain; /* Faz com que a imagem se ajuste ao espaço sem distorção */
+    align-self: center; /* Centraliza a imagem horizontalmente */
 }
+
 .card h2 {
     font-size: 20px;
     margin: 10px 0;
@@ -172,7 +180,10 @@ a:hover {
 
 .rating {
     text-align: center; /* Centraliza as estrelas */
-    display: inline-block; /* Mantém o tamanho do conteúdo alinhado */
+    display: flex; /* Flexbox para as estrelas */
+    justify-content: center; /* Centraliza as estrelas horizontalmente */
+    flex-direction: row-reverse; /* Garante que as estrelas sejam exibidas da esquerda para a direita */
+
 }
 
 .rating:not(:checked) > label {
@@ -180,41 +191,47 @@ a:hover {
     font-size: 30px;
     color: #666;
     display: inline-block; /* Faz com que os labels fiquem em linha */
-    float: none; /* Remove o alinhamento à direita */
+    margin: 0 2px; /* Adiciona um espaço entre as estrelas */
 }
-
 
 .rating:not(:checked) > input {
     position: absolute;
     appearance: none;
-  }
-  
-  .rating:not(:checked) > label {
-    float: right;
+}
+
+.rating:not(:checked) > label {
     cursor: pointer;
     font-size: 30px;
     color: #666;
-  }
-  
-  .rating:not(:checked) > label:before {
+}
+
+.rating:not(:checked) > label:before {
     content: '★';
-  }
-  
-  .rating > input:checked + label:hover,
-  .rating > input:checked + label:hover ~ label,
-  .rating > input:checked ~ label:hover,
-  .rating > input:checked ~ label:hover ~ label,
-  .rating > label:hover ~ input:checked ~ label {
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
     color: #e58e09;
-  }
-  
-  .rating:not(:checked) > label:hover,
-  .rating:not(:checked) > label:hover ~ label {
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
     color: #ff9e0b;
-  }
-  
-  .rating > input:checked ~ label {
+}
+
+.rating > input:checked ~ label {
     color: #ffa723;
-  }
-  
+}
+
+.card-container {
+    display: flex; /* Flexbox para layout em linha */
+    flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha em telas pequenas */
+    justify-content: space-around; /* Espaço entre os cards */
+    margin: 20px; /* Margem externa para o container */
+}
+
+
   
