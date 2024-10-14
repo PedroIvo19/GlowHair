@@ -35,22 +35,22 @@
             <!-- Seção Problema -->
             <h3>Problema</h3>
             <div class="botoes-problema">
-                <button>Pontas Danificadas</button>
-                <button>Cabelo Oleoso</button>
-                <button>Cabelo Embaraçado</button>
-                <button>Antipoluição</button>
+                <button onclick="filtrarProdutos('pontas-danificadas')">Pontas Danificadas</button>
+                <button onclick="filtrarProdutos('cabelo-oleoso')">Cabelo Oleoso</button>
+                <button onclick="filtrarProdutos('cabelo-embaracado')">Cabelo Embaraçado</button>
+                <button onclick="filtrarProdutos('antipoluicao')">Antipoluição</button>
             </div>
 
             <!-- Seção Tipo de Cabelo -->
             <h3>Tipo de Cabelo</h3>
             <div class="botoes-tipo-cabelo">
-                <button>Cabelo Normal</button>
-                <button>Cabelo Cacheado</button>
-                <button>Cabelo com Frizz</button>
-                <button>Cabelo Fino</button>
-                <button>Cabelo Longo</button>
-                <button>Cabelo Liso</button>
-                <button>Cabelo Seco</button>
+                <button onclick="filtrarProdutos('cabelo-normal')">Cabelo Normal</button>
+                <button onclick="filtrarProdutos('cabelo-cacheado')">Cabelo Cacheado</button>
+                <button onclick="filtrarProdutos('cabelo-com-frizz')">Cabelo com Frizz</button>
+                <button onclick="filtrarProdutos('cabelo-fino')">Cabelo Fino</button>
+                <button onclick="filtrarProdutos('cabelo-longo')">Cabelo Longo</button>
+                <button onclick="filtrarProdutos('cabelo-liso')">Cabelo Liso</button>
+                <button onclick="filtrarProdutos('cabelo-seco')">Cabelo Seco</button>
             </div>
         </div>
     </section>
@@ -59,7 +59,7 @@
         
    <!-- CARD DOS PRODUTOS -->
 <div class="card-container">
-    <div class="card">
+    <div class="card" data-problema="pontas-danificadas" data-tipo="normal">
         <img src="../img/shampooSeda.avif" alt="Seda Shampoo">
         <h2>SEDA</h2>
         <p>Shampoo para força antiquebra com Mel e Aveia - 325ml</p>
@@ -78,7 +78,7 @@
         <a href="#" class="button">Visualizar Produto</a>
     </div>
 
-    <div class="card">
+    <div class="card" data-problema="cabelo-oleoso" data-tipo="cacheado">
         <img src="../img/mascara-elseve.webp" alt="Seda Shampoo">
         <h2>SEDA MUDANÇA</h2>
         <p>Shampoo para cabelos lisos e brilhantes - 325ml</p>
@@ -97,7 +97,7 @@
         <a href="../Produto/produto.html" class="button">Visualizar Produto</a>
     </div>
 
-    <div class="card">
+    <div class="card" data-problema="cabelo-embaracado" data-tipo="liso">
         <img src="../img/mascara-eudora.webp" alt="Seda Shampoo">
         <h2>SEDA FORTALECIMENTO</h2>
         <p>Shampoo para fortalecer os fios frágeis - 325ml</p>
@@ -116,7 +116,7 @@
         <a href="#" class="button">Visualizar Produto</a>
     </div>
 
-    <div class="card">
+    <div class="card" data-problema="antipoluicao" data-tipo="fino">
         <img src="../img/reparador.webp" alt="Seda Shampoo">
         <h2>SEDA HIDRATAÇÃO</h2>
         <p>Shampoo para hidratar e nutrir os fios - 325ml</p>
@@ -158,14 +158,34 @@
     
     
 
+<script>
+    function filtrarProdutos(filtro) {
+        const cards = document.querySelectorAll('.card');
+        let algumProdutoEncontrado = false;
+
+        cards.forEach(card => {
+            const problema = card.getAttribute('data-problema');
+            const tipo = card.getAttribute('data-tipo');
+
+            if (problema === filtro || tipo === filtro) {
+                card.style.display = 'block';
+                algumProdutoEncontrado = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (!algumProdutoEncontrado) {
+            alert('Nenhum produto encontrado para esse filtro.');
+        }
+    }
+</script>
 
 
 
 
 
-
-
-    <script src="script.js"></script>
+    
 
 </body>
 </html>

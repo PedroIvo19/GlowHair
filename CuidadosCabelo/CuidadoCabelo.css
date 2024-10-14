@@ -17,6 +17,7 @@ header {
     background-image: url('../img/tipos-de-cabelos.webp');
     background-size: cover;
     background-position: center;
+    
 }
 
 nav {
@@ -125,6 +126,7 @@ a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .botoes-problema button:hover, .botoes-tipo-cabelo button:hover {
