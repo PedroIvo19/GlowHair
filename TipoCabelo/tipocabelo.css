@@ -67,7 +67,7 @@ a:hover {
 }
 
 .image-container img {
-    width: 900px;
+    width: 700px;
     height: 500px;
     object-fit: cover;
     border-radius: 20px;
@@ -121,7 +121,7 @@ p {
 }
 
 .texto-imagem .image-container img {
-    width: 900px;
+    width: 700px;
     height: 500px;
     object-fit: cover;
     border-radius: 20px;
