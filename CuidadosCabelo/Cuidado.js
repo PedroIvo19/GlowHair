@@ -10,3 +10,27 @@ function filtrarProdutos(categoria) {
         }
     });
 }
+
+function filtrarProdutos(filtro) {
+    const cards = document.querySelectorAll('.card');
+    let algumProdutoEncontrado = false;
+
+    cards.forEach(card => {
+        const problema = card.getAttribute('data-problema');
+        const tipo = card.getAttribute('data-tipo');
+
+        if (problema === filtro || tipo === filtro) {
+            card.style.display = 'block';
+            algumProdutoEncontrado = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    if (!algumProdutoEncontrado) {
+        alert('Nenhum produto encontrado para esse filtro.');
+    }
+}
+
+
+

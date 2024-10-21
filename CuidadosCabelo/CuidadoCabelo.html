@@ -41,6 +41,9 @@
                 <button onclick="filtrarProdutos('antipoluicao')">Antipoluição</button>
             </div>
 
+            <!-- Botão "X" para limpar o filtro -->
+            <button class="clear-filter" onclick="limparFiltro()">X</button>
+
             <!-- Seção Tipo de Cabelo -->
             <h3>Tipo de Cabelo</h3>
             <div class="botoes-tipo-cabelo">
@@ -154,31 +157,73 @@
         <a href="#" class="button">Visualizar Produto</a>
     </div>
 </div>
+<br>
 
+
+
+   
     
     
 
 <script>
-    function filtrarProdutos(filtro) {
-        const cards = document.querySelectorAll('.card');
-        let algumProdutoEncontrado = false;
+let filtroAtual = null; // Variável para armazenar o filtro atual
 
+function filtrarProdutos(filtro) {
+    const cards = document.querySelectorAll('.card');
+    let algumProdutoEncontrado = false;
+
+    // Se o filtro atual é o mesmo que o novo filtro, oculta os produtos
+    if (filtroAtual === filtro) {
         cards.forEach(card => {
-            const problema = card.getAttribute('data-problema');
-            const tipo = card.getAttribute('data-tipo');
-
-            if (problema === filtro || tipo === filtro) {
-                card.style.display = 'block';
-                algumProdutoEncontrado = true;
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = 'none';
         });
-
-        if (!algumProdutoEncontrado) {
-            alert('Nenhum produto encontrado para esse filtro.');
-        }
+        filtroAtual = null; // Reseta o filtro atual
+        
+        return;
     }
+
+    // Se o filtro for diferente, aplica o novo filtro
+    filtroAtual = filtro;
+
+    cards.forEach(card => {
+        const problema = card.getAttribute('data-problema');
+        const tipo = card.getAttribute('data-tipo');
+
+        if (problema === filtro || tipo === filtro) {
+            card.style.display = 'block';
+            algumProdutoEncontrado = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    if (!algumProdutoEncontrado) {
+        alert('Nenhum produto encontrado para esse filtro.');
+    }
+}
+
+    
+
+
+
+    
+    // Função para limpar o filtro e exibir todos os produtos
+    function limparFiltro() {
+            const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Resetar o array de produtos filtrados
+            produtosFiltrados = [];
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.display = 'block'; // Mostrar todos os produtos
+            });
+
+        }
+        
+
 </script>
 
 
