@@ -172,13 +172,9 @@ function filtrarProdutos(filtro) {
     const cards = document.querySelectorAll('.card');
     let algumProdutoEncontrado = false;
 
-    // Se o filtro atual é o mesmo que o novo filtro, oculta os produtos
+    // Se o filtro atual é o mesmo que o novo filtro, limpa o filtro e exibe todos os produtos
     if (filtroAtual === filtro) {
-        cards.forEach(card => {
-            card.style.display = 'none';
-        });
-        filtroAtual = null; // Reseta o filtro atual
-        
+        limparFiltro(); // Chama a função de limpar filtro
         return;
     }
 
@@ -200,28 +196,34 @@ function filtrarProdutos(filtro) {
     if (!algumProdutoEncontrado) {
         alert('Nenhum produto encontrado para esse filtro.');
     }
+
+    // Destaca o botão ativo
+    const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
+    buttons.forEach(button => {
+        button.classList.remove('active'); // Remove a classe de ativo
+        if (button.innerText === filtro.replace('-', ' ').toUpperCase()) {
+            button.classList.add('active'); // Adiciona a classe ao botão ativo
+        }
+    });
 }
 
-    
+// Função para limpar o filtro e exibir todos os produtos
+function limparFiltro() {
+    const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
+    buttons.forEach(button => {
+        button.classList.remove('active'); // Remove a classe de ativo
+    });
 
+    // Resetar o filtro atual
+    filtroAtual = null;
 
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.style.display = 'block'; // Mostrar todos os produtos
+    });
+}
 
-    
-    // Função para limpar o filtro e exibir todos os produtos
-    function limparFiltro() {
-            const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            // Resetar o array de produtos filtrados
-            produtosFiltrados = [];
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.display = 'block'; // Mostrar todos os produtos
-            });
-
-        }
+        
         
 
 </script>
