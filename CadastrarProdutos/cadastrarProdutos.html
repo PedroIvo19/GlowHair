@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="cadastrarProdutos.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-section">
+            <a href="../index.html" class="back-link"><button class="back-btn">Voltar</button></a>
+
+            <div class="image-upload">
+                <label for="file-input">
+                    <img id="product-image" src="../img/MorteSubita.png" alt="Produto" />
+                    <div class="edit-icon">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+                </label>
+                <input id="file-input" type="file" accept="image/*" onchange="loadFile(event)" />
+                <p>Coloque a imagem do produto</p>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h2>Cadastrar Produto</h2>
+            <form>
+                <input type="text" placeholder="Nome do Responsável" required />
+                <input type="text" placeholder="Razão Social" required />
+                <input type="text" placeholder="Nome do Produto" required />
+                <input type="text" placeholder="Categoria" required />
+                <textarea placeholder="Benefícios" required></textarea>
+                <textarea placeholder="Como usar" required></textarea>
+                <button type="submit">Enviar produto para análise</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loadFile = (event) => {
+            const image = document.getElementById('product-image');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+</body>
+</html>

@@ -133,9 +133,26 @@ p {
 }
 
 #Sobre {
-    text-align: center;
-    margin: 50px;
+  font-size: 36px; /* Tamanho da fonte */
+  color: #ffffff; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Espaçamento em cima e embaixo */
+  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  letter-spacing: 2px; /* Espaçamento entre letras */
+  font-weight: bold; /* Deixa o texto em negrito */
+  position: relative; /* Necessário para o efeito do pseudo-elemento */
 }
+
+#Sobre::after {
+  content: ""; /* Adiciona um pseudo-elemento */
+  display: block;
+  width: 50%; /* Largura da linha */
+  height: 4px; /* Altura da linha */
+  background-color: #fff; /* Cor da linha */
+  margin: 10px auto; /* Centraliza a linha */
+  border-radius: 5px; /* Arredonda as bordas da linha */
+}
+
 
 
 
@@ -309,6 +326,55 @@ p {
     width: 25%;
     float: left;
   }
+
+
+
+
+/* Seção de Parceria */
+/* Seção de Parceria */
+.container {
+  background-color: #b67d5e;
+  padding: 30px;
+  width: 100%; /* Agora ocupa a largura total da tela */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner {
+  background: linear-gradient(to right, #ff7423, #b33f0e);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.banner h2 {
+  color: white;
+  margin: 0;
+}
+
+.content {
+  margin: 20px 0;
+  color: white;
+}
+
+.btn {
+  background-color: #4e2d1d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #3b2418;
+}
+
+
+
+
+
 
   /*FOOOOOTTTEEEEERRR*/
   .footer {
