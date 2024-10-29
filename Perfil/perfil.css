@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8b5e3c;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #9b5d41;
+    padding: 30px;
+    width: 320px;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #e08636;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: #e08636;
+    border: none;
+    padding: 10px 16px;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+    width: 100px;
+    justify-content: center;
+}
+
+.back-button:hover {
+    background-color: #d7742c;
+}
+
+.back-button span {
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.header {
+    background-color: #e08636;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: 20px 0;
+    text-align: left;
+    color: white;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.input-container img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.input-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    background: none;
+}
+
+.settings-icon {
+    width: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.logout-button {
+    background-color: #c71616;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.logout-button:hover {
+    background-color: #a61212;
+}

@@ -242,18 +242,7 @@ p {
     z-index: 999;
   }
   
-  #s4 {
-    padding: 6px;
-    background: #000000;
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    margin-left: 36px;
-    border-radius: 20px;
-    opacity: 0.3;
-    cursor: pointer;
-    z-index: 999;
-  }
+
   
   #s1:hover,
   #s2:hover,
