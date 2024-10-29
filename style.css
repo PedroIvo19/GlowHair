@@ -70,7 +70,7 @@ a:hover {
     width: 900px;
     height: 500px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 0px;
 }
 
 .text-container {
@@ -314,6 +314,7 @@ p {
   .slide img {
     width: 25%;
     float: left;
+    border-radius: 9px;
   }
 
 
@@ -432,5 +433,43 @@ p {
 }
 
 
+/*RESPONSIVIDADE */
 
+/* Responsividade */
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column; /* Empilha os itens da navegação */
+      align-items: flex-start; /* Alinha os itens à esquerda */
+  }
+
+  #nav-links {
+      width: 100%; /* Largura total para os links */
+  }
+
+  .sobre-section, .texto-imagem-content {
+      flex-direction: column; /* Coloca as colunas em uma coluna única */
+      align-items: center; /* Centraliza o conteúdo */
+  }
+
+  .image-container img {
+      width: 100%; /* Mantém a imagem responsiva */
+  }
+}
   
+
+.hidden {
+    display: none; /* Oculta os elementos */
+}
+
+/* Para o botão de login e registrar */
+#login-register-btn {
+    cursor: pointer; /* Aponta que é clicável */
+    background-color: #1a2b3a; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+#login-register-btn:hover {
+    background-color: #3b4c5d; /* Cor ao passar o mouse */
+}
