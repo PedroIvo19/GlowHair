@@ -11,19 +11,20 @@
 <body>
     <header>
         <nav>
-         
             <ul id="nav-links">
                 <li><a href="./CuidadosCabelo/CuidadoCabelo.html">Produtos</a></li>
                 <li><a href="./TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
-                <li><a href="#">Problemas do Cabelo</a></li>
+                <li><a href="./ProblemasCabelo/problemas.html">Problemas do Cabelo</a></li>
+    
                 <li class="logo">
                     <a href="./index.html">
-                        <img src="./img/logo.svg" alt="Logo" style="height: 50px;">
+                        <img src="./img/logo.svg" alt="Logo">
                     </a>
                 </li>
-                <li id="login-btn"><a href="./Cliente/cadastro-login.html">Login</a></li>
-                <li id="register-btn"><a href="./Cliente/cadastro-login.html">Registrar</a></li>
-                <li id="profile-btn" style="display: none;"><a href="./perfil.html">Perfil</a></li>
+    
+                <li><a href="./Cliente/cadastro-login.html">Login</a></li>
+                <li><a href="./Cliente/cadastro-login.html">Registrar</a></li>
+                <li style="display: none;"><a href="./perfil.html">Perfil</a></li>
             </ul>
         </nav>
     </header>
@@ -87,7 +88,7 @@
             <h2>Gostaria de fazer uma parceria ?</h2>
         </div>
         <div class="content">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
+            <p>Estamos sempre em busca de novas opções para oferecer aos nossos clientes! Se você tem um produto incrível que gostaria de apresentar, não hesite em compartilhar. Envie-nos as informações sobre o seu produto, incluindo descrição, características e benefícios, e juntos podemos torná-lo visível para um público maior. Sua contribuição é valiosa e pode fazer a diferença!</p>
         </div>
         <a href="./CadastrarProdutos/cadastrarProdutos.html"><button class="btn">Cadastrar Produto</button></a>
     </div>
@@ -125,6 +126,11 @@
 
 
 
-
+<script>
+    window.addEventListener("scroll", function() {
+    const scrollPosition = window.scrollY;
+    document.querySelector("header").style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+});
+</script>
 </body>
 </html>

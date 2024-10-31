@@ -9,7 +9,7 @@
 
 body, html {
     font-family: Arial, sans-serif;
-    background-color: #b67d5e;
+    background-color: #8F5231;
 }
 
 header {
@@ -17,36 +17,45 @@ header {
     background-image: url('../img/imagemcertaheader.png');
     background-size: cover;
     background-position: center;
-    
-}
-
-nav {
+    transition: background-position 0.1s ease-out;
+  }
+  
+  
+  nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centraliza a logo no meio da barra */
     align-items: center;
     padding: 20px;
-}
-
-ul {
+  }
+  
+  #nav-links {
     list-style: none;
     display: flex;
     align-items: center;
     width: 100%;
-}
-
-li {
-    margin: 0 20px;
-}
-
-li.logo {
-    margin: 0 auto;
-}
+    justify-content: space-between; /* Distribui espaço igualmente entre os links */
+  }
+  
+  #nav-links li {
+    margin: 0 15px; /* Espaçamento entre os itens */
+  }
+  
+  li.logo {
+    flex-grow: 1; /* Faz a logo ocupar o espaço central */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo img {
+    height: 80px; /* Ajuste o tamanho da logo conforme necessário */
+    display: block;
+  }
 
 a {
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     background-color: transparent;
     padding: 10px 15px;
     border-radius: 5px;
@@ -89,7 +98,7 @@ a:hover {
 
 /* Estilos para o Filtro de Busca */
 .filtro-busca {
-    background-color: #b67d5e;
+    background-color: #8F5231;
     padding: 40px;
     border-radius: 8px;
     width: 80%;

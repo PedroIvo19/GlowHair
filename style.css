@@ -8,43 +8,55 @@
 
 body, html {
     font-family: Arial, sans-serif;
-    background-color: #b67d5e;
+    background-color: #8F5231;
 }
 
 header {
-    height: 50vh;
-    background-image: url('./img/imagemcertaheader.png');
-    background-size: cover;
-    background-position: center;
+  height: 50vh;
+  background-image: url('./img/imagemcertaheader.png');
+  background-size: cover;
+  background-position: center;
+  transition: background-position 0.1s ease-out;
 }
+
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  justify-content: center; /* Centraliza a logo no meio da barra */
+  align-items: center;
+  padding: 20px;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    width: 100%;
+#nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* Distribui espaço igualmente entre os links */
 }
 
-li {
-    margin: 0 20px;
+#nav-links li {
+  margin: 0 15px; /* Espaçamento entre os itens */
 }
 
 li.logo {
-    margin: 0 auto;
+  flex-grow: 1; /* Faz a logo ocupar o espaço central */
+  display: flex;
+  justify-content: center;
 }
+
+.logo img {
+  height: 80px; /* Ajuste o tamanho da logo conforme necessário */
+  display: block;
+}
+
+
 
 a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    font-size: px;
+    font-size: 20px;
     background-color: transparent;
     padding: 10px 15px;
     border-radius: 5px;
@@ -323,7 +335,7 @@ p {
 /* Seção de Parceria */
 /* Seção de Parceria */
 .container {
-  background-color: #b67d5e;
+  background-color: #8F5231;
   padding: 30px;
   width: 100%; /* Agora ocupa a largura total da tela */
   text-align: center;
