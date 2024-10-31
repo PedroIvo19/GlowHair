@@ -1,0 +1,285 @@
+/* Reset básico */
+body, html, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f6f6f6;
+    color: #333;
+    padding: 20px;
+}
+
+/* Estilos do botão Voltar */
+.back-button {
+    background-color: #f27d42;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #e16c3c;
+}
+
+/* Container principal */
+.main-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Define a largura total para o container principal */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap; /* Permite ajuste responsivo */
+}
+
+/* Estilo da imagem do produto */
+.product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%; /* Ocupa 40% da largura total */
+}
+
+.product-image img {
+    width: 100%; /* Ocupa a largura total do container de imagem */
+    border-radius: 10px;
+}
+
+/* Estilo das informações do produto */
+.product-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.description {
+    margin: 20px 0;
+    color: #666;
+}
+
+/* Tabs */
+.tabs {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #d08651;
+    color: #fff;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.tab-button.active {
+    background-color: #4a2417;
+}
+
+.tab-button:hover {
+    background-color: #b5643e;
+}
+
+/* Conteúdo dos Tabs */
+.tab-content {
+    display: none;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Seção de Avaliações */
+.reviews-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px; /* Limite de largura para a seção de avaliações */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto; /* Centraliza a seção de avaliações */
+}
+
+/* Título das Avaliações */
+.reviews-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Cartão de Avaliação */
+.review-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.review-card > .review-details {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.review-details {
+    text-align: center;
+}
+
+.review-content {
+    flex: 3;
+}
+
+/* Ajuste para layout em coluna */
+@media screen and (min-width: 768px) {
+    .review-card {
+        flex-direction: row;
+    }
+
+    .review-details {
+        text-align: left;
+    }
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+}
+
+.stars {
+    color: #ff3366;
+    font-size: 20px;
+}
+
+.review-date {
+    color: #999;
+    margin-left: 10px;
+}
+
+.review-quality {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quality-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    width: 150px;
+    height: 8px;
+    margin: 0 10px;
+}
+
+.quality-fill {
+    background-color: #ff3366;
+    height: 8px;
+    border-radius: 5px;
+}
+
+.quality-score {
+    font-weight: bold;
+}
+
+.review-recommend {
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Ajuste de preenchimento das seções para largura total */
+.product-image, .product-info {
+    max-width: 100%;
+    margin: 0;
+}
+
+
+
+.product-info {
+    flex: 1;
+    padding: 20px;
+    max-width: 100%; /* Garante que ocupe 100% da largura */
+    text-align: center; /* Centraliza o texto */
+}
+
+.product-info h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.product-info .description {
+    margin: 20px 0;
+    color: #666;
+    line-height: 1.5; /* Aumenta a altura da linha para melhor legibilidade */
+}
+
+.tabs {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center; /* Centraliza as abas */
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #d08651;
+    color: #fff;
+    margin: 0 5px; /* Margens laterais menores para uma aparência mais compacta */
+    border-radius: 5px;
+}
+
+.tab-button.active {
+    background-color: #4a2417;
+}
+
+.tab-button:hover {
+    background-color: #b5643e;
+}
+
+.tab-content {
+    display: none;
+    text-align: left; /* Alinhamento à esquerda para o conteúdo */
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tab-content ul,
+.tab-content ol {
+    margin-left: 20px; /* Indentação para listas */
+    color: #666; /* Cor do texto da lista */
+}
+
+.tab-content li {
+    margin-bottom: 5px; /* Espaçamento entre itens da lista */
+}
