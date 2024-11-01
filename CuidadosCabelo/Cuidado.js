@@ -34,3 +34,15 @@ function filtrarProdutos(filtro) {
 
 
 
+// Seleciona o botão hambúrguer e o menu de navegação
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('#nav-links');
+
+// Alterna a visibilidade do menu de navegação
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show-menu');
+});
+
+
+
+

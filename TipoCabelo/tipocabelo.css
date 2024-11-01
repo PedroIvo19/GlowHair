@@ -12,12 +12,12 @@ body, html {
 }
 
 header {
-  height: 50vh;
   background-image: url('../img/imagemcertaheader.png');
   background-size: cover;
   background-position: center;
-  transition: background-position 0.1s ease-out;
+  height: 50vh;
 }
+
 
 
 nav {
@@ -30,14 +30,22 @@ nav {
 #nav-links {
   list-style: none;
   display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between; /* Distribui espaço igualmente entre os links */
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 #nav-links li {
-  margin: 0 15px; /* Espaçamento entre os itens */
+  display: inline-block;
 }
+
+#nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 8px;
+}
+
 
 li.logo {
   flex-grow: 1; /* Faz a logo ocupar o espaço central */
@@ -163,6 +171,8 @@ p {
   border-radius: 10px;
   animation: tituloFade 2s ease-in-out;
 }
+
+
 
 @keyframes tituloFade {
   0% {
@@ -357,9 +367,7 @@ p {
 }
 
 .footer-content {
-    display: flex; /* Flexbox para layout em linha */
-    justify-content: space-around; /* Espaço entre as seções */
-    flex-wrap: wrap; /* Permite que as seções quebrem para a próxima linha em telas pequenas */
+  flex-direction: column;
 }
 
 .footer-section {
@@ -416,3 +424,127 @@ p {
 
 
 
+#nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-links li {
+    display: inline-block;
+}
+
+#nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8px;
+}
+
+/* Layout Responsivo */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #nav-links {
+        display: none; /* Esconde o menu principal */
+        flex-direction: column;
+        width: 100%;
+        background-color: #f7f7f7;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #nav-links.show {
+        display: flex; /* Exibe o menu ao clicar no hambúrguer */
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .logo {
+        order: -1; /* Centraliza a logo no topo */
+    }
+}
+
+/* Estilos para as seções */
+section.sobre, section.texto-imagem {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.text-container {
+    flex: 2;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    section.sobre, section.texto-imagem {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Botão de saber mais */
+button.btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    background-color: #4a2417;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-section {
+    margin-bottom: 15px;
+}
+
+.footer-bottom {
+    font-size: 0.85em;
+    color: #ccc;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 8px;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+/* Ajustes para o botão hambúrguer */
+.hamburger {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}

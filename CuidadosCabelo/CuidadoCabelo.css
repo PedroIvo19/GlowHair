@@ -281,3 +281,103 @@ a:hover {
         margin: 10px 0;
     }
 }
+
+
+
+/* Estilos gerais para navegação e cabeçalho */
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Menu de navegação */
+#nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-links li {
+    position: relative;
+}
+
+#nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+#nav-links a:hover {
+    color: #007BFF;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #nav-links {
+        flex-direction: column;
+    }
+    .filtro-busca {
+        padding: 10px;
+    }
+
+    /* Cards de produtos em duas colunas em telas médias */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Ajustes para cards em tela menor */
+    .card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #nav-links {
+        display: none; /* Esconde o menu na tela pequena */
+    }
+
+    /* Exibe um botão hambúrguer */
+    #menu-btn {
+        display: inline-block;
+    }
+
+    .botoes-problema,
+    .botoes-tipo-cabelo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .botoes-problema button,
+    .botoes-tipo-cabelo button {
+        margin: 5px;
+        flex: 1 1 45%; /* Botões menores para caber na tela */
+    }
+
+    .cuidados-cabelo h1 {
+        font-size: 24px;
+    }
+}

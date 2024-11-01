@@ -175,7 +175,13 @@ p {
   }
 }
 
-
+nav {
+  display: flex;
+  flex-wrap: wrap; /* Ajuste o layout em telas menores */
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
 
   
   .prev, .next {
@@ -414,5 +420,27 @@ p {
     margin: 0; /* Remove margem */
 }
 
+
+
+/* Media query para telas com 768px ou menos */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Muda o layout da header para coluna */
+  }
+
+  nav {
+    flex-direction: column; /* Muda o layout dos itens de nav para coluna */
+    align-items: center; /* Centraliza os itens na coluna */
+  }
+
+  #nav-links {
+    flex-direction: column; /* Muda os links para coluna */
+    align-items: center; /* Centraliza os itens de navegação */
+  }
+
+  #nav-links li {
+    margin: 10px 0; /* Ajusta o espaçamento entre os itens em coluna */
+  }
+}
 
 

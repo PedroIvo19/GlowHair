@@ -485,3 +485,65 @@ p {
 #login-register-btn:hover {
     background-color: #3b4c5d; /* Cor ao passar o mouse */
 }
+
+
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  /* Ajusta o menu para formato hambúrguer */
+  header nav ul#nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  
+  header nav ul#nav-links li {
+      margin: 10px 0;
+  }
+
+  /* Ajusta a logo e oculta os elementos de perfil */
+  header nav ul#nav-links li.logo img {
+      width: 80px;
+  }
+
+  header nav ul#nav-links li[style="display: none;"] {
+      display: none;
+  }
+
+  /* Seções Sobre e Produtos */
+  section.sobre, section.texto-imagem {
+      flex-direction: column;
+  }
+
+  section.sobre .image-container, section.texto-imagem .image-container,
+  section.sobre .text-container, section.texto-imagem .text-container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  /* Slider */
+  #slider-wrapper .inner-wrapper {
+      flex-direction: column;
+  }
+
+  #slider-wrapper .overflow-wrapper {
+      overflow-x: scroll;
+  }
+
+  /* Estilos do footer */
+  footer.footer {
+      text-align: center;
+      padding: 20px;
+  }
+
+  footer .footer-section {
+      width: 100%;
+      padding: 10px 0;
+  }
+
+  footer .footer-bottom {
+      padding: 10px;
+  }
+}
+
+
+
