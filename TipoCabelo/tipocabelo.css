@@ -20,6 +20,15 @@ header {
 
 
 
+header {
+  height: 50vh;
+  background-image: url('../img/imagemcertaheader.png');
+  background-size: cover;
+  background-position: center;
+  transition: background-position 0.1s ease-out;
+}
+
+
 nav {
   display: flex;
   justify-content: center; /* Centraliza a logo no meio da barra */
@@ -30,22 +39,14 @@ nav {
 #nav-links {
   list-style: none;
   display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* Distribui espaço igualmente entre os links */
 }
 
 #nav-links li {
-  display: inline-block;
+  margin: 0 15px; /* Espaçamento entre os itens */
 }
-
-#nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  padding: 8px;
-}
-
 
 li.logo {
   flex-grow: 1; /* Faz a logo ocupar o espaço central */
@@ -59,18 +60,18 @@ li.logo {
 }
 
 a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    background-color: transparent;
-    padding: 10px 15px;
-    border-radius: 5px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 20px;
+  background-color: transparent;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
 
 a:hover {
-    color: lightgray;
-    background-color: rgba(0, 0, 0, 0.5);
+  color: lightgray;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .sobre {
@@ -88,7 +89,7 @@ a:hover {
     width: 700px;
     height: 500px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 9px;
 }
 
 .text-container {
@@ -234,64 +235,7 @@ p {
     overflow: hidden;
   }
   
-  #s1 {
-    padding: 6px;
-    background: #000000;
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    margin-left: -36px;
-    border-radius: 20px;
-    opacity: 0.3;
-    cursor: pointer;
-    z-index: 999;
-  }
   
-  #s2 {
-    padding: 6px;
-    background: #000000;
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    margin-left: -12px;
-    border-radius: 20px;
-    opacity: 0.3;
-    cursor: pointer;
-    z-index: 999;
-  }
-  
-  #s3 {
-    padding: 6px;
-    background: #000000;
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    margin-left: 12px;
-    border-radius: 20px;
-    opacity: 0.3;
-    cursor: pointer;
-    z-index: 999;
-  }
-  
-  #s4 {
-    padding: 6px;
-    background: #000000;
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    margin-left: 36px;
-    border-radius: 20px;
-    opacity: 0.3;
-    cursor: pointer;
-    z-index: 999;
-  }
-  
-  #s1:hover,
-  #s2:hover,
-  #s3:hover,
-  #s4:hover {
-    opacity: .50;
-  }
   
   .inner-wrapper {
     width: 940px;
@@ -303,41 +247,7 @@ p {
     overflow: hidden;
   }
   
-  .control {
-    display: none;
-  }
-  
-  #Slide1:checked ~ .overflow-wrapper {
-    margin-left: 0%;
-  }
-  
-  #Slide2:checked ~ .overflow-wrapper {
-    margin-left: -100%;
-  }
-  
-  #Slide3:checked ~ .overflow-wrapper {
-    margin-left: -200%;
-  }
-  
-  #Slide4:checked ~ .overflow-wrapper {
-    margin-left: -300%;
-  }
-  
-  #Slide1:checked + #s1 {
-    opacity: 1;
-  }
-  
-  #Slide2:checked + #s2 {
-    opacity: 1;
-  }
-  
-  #Slide3:checked + #s3 {
-    opacity: 1;
-  }
-  
-  #Slide4:checked + #s4 {
-    opacity: 1;
-  }
+ 
   
   .overflow-wrapper {
     width: 400%;
@@ -424,56 +334,8 @@ p {
 
 
 
-#nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
 
-#nav-links li {
-    display: inline-block;
-}
 
-#nav-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 8px;
-}
-
-/* Layout Responsivo */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #nav-links {
-        display: none; /* Esconde o menu principal */
-        flex-direction: column;
-        width: 100%;
-        background-color: #f7f7f7;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    #nav-links.show {
-        display: flex; /* Exibe o menu ao clicar no hambúrguer */
-    }
-
-    .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .logo {
-        order: -1; /* Centraliza a logo no topo */
-    }
-}
 
 /* Estilos para as seções */
 section.sobre, section.texto-imagem {
