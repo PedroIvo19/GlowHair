@@ -1,0 +1,110 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #B2674B;
+}
+
+.forgot-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: #1b1a1a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forgot-password {
+    text-align: center;
+    width: 100%;
+}
+
+.logo {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.forgot-password h1 {
+    font-size: 28px;
+    color: #B2674B;
+    margin-bottom: 10px;
+}
+
+.forgot-password p {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.forgot-password form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.forgot-password form label {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.forgot-password form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.forgot-password form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #B2674B;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.forgot-password form button:hover {
+    background-color: #8c4f39;
+}
+
+/* Botão de Voltar */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    color: #B2674B;
+    font-weight: bold;
+    border: 2px solid #B2674B;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #B2674B;
+    color: #fff;
+    transform: scale(1.05);
+}
