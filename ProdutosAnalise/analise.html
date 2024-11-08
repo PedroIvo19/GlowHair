@@ -27,10 +27,37 @@
                     <label>Nome do Produto:</label>
                     <input type="text" readonly id="nomeProduto">
                 </div>
+
                 <div class="field">
-                    <label>Categoria:</label>
-                    <input type="text" readonly id="categoria">
+                    <label>Descrição:</label>
+                    <input type="text" readonly id="descricaoProduto">
                 </div>
+                
+                <div class="field">
+                    <label for="categoria">Problema do Cabelo:</label>
+                    <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
+                    <option value="queda" style="font-size: 18px;">Pontas Danificadas</option>
+                    <option value="oleosidade" style="font-size: 18px;">Cabelo Oleoso</option>
+                    <option value="ressecamento" style="font-size: 18px;">Cabelo Poroso</option>
+                    <option value="caspa" style="font-size: 18px;">Cabelo com Frizz</option>
+                    
+                    </select>
+
+                </div>
+
+                <div class="field">
+                    <label for="categoria">Tipo de Cabelo:</label>
+                    <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
+                    <option value="queda" style="font-size: 18px;">Cabelo Crespo</option>
+                    <option value="oleosidade" style="font-size: 18px;">Cabelo Cacheado</option>
+                    <option value="ressecamento" style="font-size: 18px;">Cabelo Ondulado</option>
+                    <option value="caspa" style="font-size: 18px;">Caspa</option>
+                    <option value="frizz" style="font-size: 18px;">Cabelo Liso</option>
+                    </select>
+
+                </div>
+
+
                 <div class="field">
                     <label>Benefícios:</label>
                     <textarea readonly id="beneficios"></textarea>
@@ -76,6 +103,26 @@
             document.getElementById("productImage").src = ""; // Limpa a imagem
             alert("Produto rejeitado.");
         });
+
+        fetch('http://localhost:3001/api/produtos')
+        .then(response => response.json())
+        .then(products => {
+            const container = document.getElementById('product-list');
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <h2>${product.nomeProduto}</h2>
+                    <p>Responsável: ${product.responsavel}</p>
+                    <p>Razão Social: ${product.razaoSocial}</p>
+                    <p>Categoria: ${product.categoria}</p>
+                    <p>Benefícios: ${product.beneficios}</p>
+                    <p>Como Usar: ${product.comoUsar}</p>
+                    <img src="${product.imageUrl}" alt="${product.nomeProduto}">
+                `;
+                container.appendChild(productElement);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar produtos:', error));
     </script>
 </body>
 </html>
