@@ -165,6 +165,7 @@
 
 
    
+
     
     
 
@@ -231,7 +232,29 @@ function limparFiltro() {
 
 </script>
 
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.getElementById('loginLink');
+    const registerLink = document.getElementById('registerLink');
+    const profileLink = document.getElementById('profileLink');
 
+    // Verifica se o usuário está logado
+    const isLoggedIn = sessionStorage.getItem('loggedIn');
+    const userName = sessionStorage.getItem('userName');
+
+    if (isLoggedIn) {
+        loginLink.style.display = 'none'; // Oculta o link de Login
+        registerLink.style.display = 'none'; // Oculta o link de Registrar
+        
+        // Cria um botão de perfil
+        const profileButton = document.createElement('li');
+        profileButton.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+        profileLink.parentNode.insertBefore(profileButton, profileLink);
+        profileLink.style.display = 'none'; // Oculta o link de Perfil original
+    }
+});
+
+</script>
 
 
 

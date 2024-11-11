@@ -39,7 +39,41 @@
             </div>
         </div>
 
-        <button class="logout-button">Sair da Conta</button>
+        <button class="logout-button" id="logoutButton">Sair da Conta</button>
+
     </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userName = sessionStorage.getItem('userName');
+            const userEmail = sessionStorage.getItem('userEmail');
+        
+            // Preenche os campos do perfil com os dados do usuário
+            if (userName) {
+                document.getElementById('name').value = userName;
+            }
+            if (userEmail) {
+                document.getElementById('email').value = userEmail;
+            }
+        
+            // Função para logout
+            const logoutButton = document.getElementById('logoutButton');
+            logoutButton.addEventListener('click', () => {
+                // Limpa os dados do sessionStorage
+                sessionStorage.removeItem('loggedIn');
+                sessionStorage.removeItem('userName');
+                sessionStorage.removeItem('userEmail');
+                
+                // Opcional: Limpa todos os itens do sessionStorage
+                // sessionStorage.clear();
+        
+                // Redireciona para a página de login
+                window.location.href = '../index.html';
+            });
+        });
+        </script>
+        
+    
 </body>
 </html>
