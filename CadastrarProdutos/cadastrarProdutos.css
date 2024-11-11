@@ -149,3 +149,30 @@ form button:hover {
     text-decoration: none; /* Remove a linha azul do link */
 }
 
+
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field label {
+    font-weight: bold;
+    color: #fff;
+}
+
+.field input,
+.field textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    resize: none;
+}
+
+textarea {
+    height: 80px;
+}

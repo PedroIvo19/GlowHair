@@ -30,7 +30,35 @@
                 <input type="text" placeholder="Nome do Responsável" required id="responsavel" />
                 <input type="text" placeholder="Razão Social" required id="razaoSocial" />
                 <input type="text" placeholder="Nome do Produto" required id="nomeProduto" />
-                <input type="text" placeholder="Categoria" required id="categoria" />
+                
+                <div class="field">
+                    <input type="text" placeholder="Descrição" required id="descricaoProduto" />
+                </div>
+
+                
+                
+                <div class="field">
+                    <label for="categoria">Problema do Cabelo:</label>
+                    <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
+                    <option value="queda" style="font-size: 18px;">Pontas Danificadas</option>
+                    <option value="oleosidade" style="font-size: 18px;">Cabelo Oleoso</option>
+                    <option value="ressecamento" style="font-size: 18px;">Cabelo Poroso</option>
+                    <option value="caspa" style="font-size: 18px;">Cabelo com Frizz</option>
+                    
+                    </select>
+
+
+                    <div class="field">
+                        <label for="categoria">Tipo de Cabelo:</label>
+                        <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
+                        <option value="queda" style="font-size: 18px;">Cabelo Crespo</option>
+                        <option value="oleosidade" style="font-size: 18px;">Cabelo Cacheado</option>
+                        <option value="ressecamento" style="font-size: 18px;">Cabelo Ondulado</option>
+                        <option value="caspa" style="font-size: 18px;">Caspa</option>
+                        <option value="frizz" style="font-size: 18px;">Cabelo Liso</option>
+                        </select>
+    
+
                 <textarea placeholder="Benefícios" required id="beneficios"></textarea>
                 <textarea placeholder="Como usar" required id="comoUsar"></textarea>
                 <button type="submit">Enviar produto para análise</button>
@@ -59,12 +87,20 @@
                 comoUsar: document.getElementById("comoUsar").value,
             };
 
-            // Armazenando os dados do produto no localStorage
-            localStorage.setItem("productData", JSON.stringify(productData));
-
-            // Redirecionando para a página de análise
+            fetch('http://localhost:3001/api/produtos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
             window.location.href = "analise.html";
-        });
+        })
+        .catch(error => console.error('Erro ao enviar produto:', error));
+    });
     </script>
 
 </body>
