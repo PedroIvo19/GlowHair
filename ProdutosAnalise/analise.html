@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="field">
-                    <label for="categoria">Tipo de Cabelo:</label>
-                    <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
+                    <label for="tipoCabelo">Tipo de Cabelo:</label>
+                    <select id="tipoCabelo" name="tipoCabelo" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
                     <option value="queda" style="font-size: 18px;">Cabelo Crespo</option>
                     <option value="oleosidade" style="font-size: 18px;">Cabelo Cacheado</option>
                     <option value="ressecamento" style="font-size: 18px;">Cabelo Ondulado</option>
@@ -72,10 +72,11 @@
     <script>
         const productData = JSON.parse(localStorage.getItem("productData"));
         if (productData) {
-            document.getElementById("responsavel").value = productData.responsavel;
-            document.getElementById("razaoSocial").value = productData.razaoSocial;
             document.getElementById("nomeProduto").value = productData.nomeProduto;
-            document.getElementById("categoria").value = productData.categoria;
+            document.getElementById("nomeLoja").value = productData.nomeLoja;
+            document.getElementById("descricao").value = productData.descricao;
+            document.getElementById("problema").value = productData.problema;
+            document.getElementById("tipoCabelo").value = productData.tipoCabelo;
             document.getElementById("beneficios").value = productData.beneficios;
             document.getElementById("comoUsar").value = productData.comoUsar;
             document.getElementById("productImage").src = localStorage.getItem("productImage");
@@ -108,10 +109,10 @@
                 const productElement = document.createElement('div');
                 productElement.innerHTML = `
                     <h2>${product.nomeProduto}</h2>
-                    <p>Responsável: ${product.responsavel}</p>
-                    <p>Razão Social: ${product.razaoSocial}</p>
-                    <p>Categoria: ${product.categoria}</p>
-                    <p>Benefícios: ${product.beneficios}</p>
+                    <p>Nome do Produto: ${product.nomeProduto}</p>
+                    <p>Nome Loja: ${product.nomeLoja}</p>
+                    <p>Descricao: ${product.descricao}</p>
+                    <p>Problema do Cabelo: ${product.problema}</p>
                     <p>Como Usar: ${product.comoUsar}</p>
                     <img src="${product.imageUrl}" alt="${product.nomeProduto}">
                 `;
@@ -120,7 +121,7 @@
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
 
-      
+       
 
     </script>
 </body>
