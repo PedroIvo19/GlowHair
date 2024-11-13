@@ -16,18 +16,13 @@
             </div>
             <div class="info-section">
                 <div class="field">
-                    <label>Nome Responsável:</label>
-                    <input type="text" readonly id="responsavel">
-                </div>
-                <div class="field">
-                    <label>Razão Social:</label>
-                    <input type="text" readonly id="razaoSocial">
-                </div>
-                <div class="field">
-                    <label>Nome do Produto:</label>
+                    <label>Nome Produto:</label>
                     <input type="text" readonly id="nomeProduto">
                 </div>
-
+                <div class="field">
+                    <label>Nome da Loja:</label>
+                    <input type="text" readonly id="nomeLoja">
+                </div>      
                 <div class="field">
                     <label>Descrição:</label>
                     <input type="text" readonly id="descricaoProduto">
@@ -94,10 +89,11 @@
 
         document.querySelector(".reject").addEventListener("click", function() {
             localStorage.removeItem("productData");
-            document.getElementById("responsavel").value = "";
-            document.getElementById("razaoSocial").value = "";
             document.getElementById("nomeProduto").value = "";
-            document.getElementById("categoria").value = "";
+            document.getElementById("nomeLoja").value = "";
+            document.getElementById("descricao").value = "";
+            document.getElementById("problemaCabelo").value = "";
+            document.getElementById("tipoCabelo").value = "";
             document.getElementById("beneficios").value = "";
             document.getElementById("comoUsar").value = "";
             document.getElementById("productImage").src = ""; // Limpa a imagem
@@ -123,6 +119,9 @@
             });
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
+
+      
+
     </script>
 </body>
 </html>

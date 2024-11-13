@@ -13,13 +13,14 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form id="cadastroForm">
                 <h1>Criar Conta</h1>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="E-mail">
-                <input type="text" placeholder="CPF">
-                <input type="password" placeholder="Senha">
-                <button>Cadastrar</button>
+                <input type="text" id="nome" placeholder="Nome" required>
+                <input type="email" id="cadastroEmail" placeholder="E-mail" required>
+                <input type="number" id="telefone" placeholder="Telefone" required>
+                <input type="text" id="cpf" placeholder="CPF" required>
+                <input type="password" id="senhaCadastro" placeholder="Senha" required>
+                <button type="submit">Cadastrar</button>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -49,18 +50,18 @@
     </div>
 
     <script>
-        const usuario = {
-            nome: "Jorge",
-            email: "jorge@gmail.com",
-            senha: "123"
-        };
+        // const usuario = {
+        //     nome: "Jorge",
+        //     email: "jorge@gmail.com",
+        //     senha: "123"
+        // };
 
         const container = document.getElementById('container');
         const registerBtn = document.getElementById('register');
         const loginBtn = document.getElementById('login');
         const loginButton = document.getElementById('loginBtn');
         const errorMessage = document.getElementById('error-message');
-
+        
         registerBtn.addEventListener('click', () => {
             container.classList.add("active");
         });
@@ -69,29 +70,184 @@
             container.classList.remove("active");
         });
 
-        loginButton.addEventListener('click', (event) => {
-            event.preventDefault();
+        // loginButton.addEventListener('click', (event) => {
+        //     event.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        //     const email = document.getElementById('email').value;
+        //     const password = document.getElementById('password').value;
 
-            if (!email || !password) {
-                errorMessage.innerText = "Não pode deixar em branco";
-                errorMessage.style.display = "block";
-            } else {
-                errorMessage.style.display = "none";
+        //     if (!email || !password) {
+        //         errorMessage.innerText = "Não pode deixar em branco";
+        //         errorMessage.style.display = "block";
+        //     } else {
+        //         errorMessage.style.display = "none";
 
-                if (email === usuario.email && password === usuario.senha) {
-                    sessionStorage.setItem('loggedIn', true);
-                    sessionStorage.setItem('userName', usuario.nome);
+        //         if (email === usuario.email && password === usuario.senha) {
+        //             sessionStorage.setItem('loggedIn', true);
+        //             sessionStorage.setItem('userName', usuario.nome);
+        //             window.location.href = '../index.html';
+        //         } else {
+        //             errorMessage.innerText = "E-mail ou senha incorretos";
+        //             errorMessage.style.display = "block";
+        //         }
+        //     }
+        // });
+
+
+        fetch('http://localhost:5000/usuario', {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => {
+                    response.map((usuario) => {
+                        validarLogin(usuario.email, usuario.senha, usuario.nome);
+                    })
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao conectar com o servidor. Tente novamente.');
+                });
+
+function validarLogin(email, senha, nome) {
+
+    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
+    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
+    
+    if (email === storedEmail && senha === storedSenha) {
+        alert('Login bem-sucedido!');
+        sessionStorage.setItem('loggedIn', true); // Marca o usuário como logado
+        sessionStorage.setItem('userName', nome);  // Usa o e-mail como nome (você pode ajustar isso)
+        window.location.href = './index.html';  // Redireciona para a página principal após login
+    } else {
+        alert('E-mail ou senha incorretos');
+    }
+}
+
+function validarLogin(email, senha, nome) {
+
+    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
+    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
+    
+    if (email === storedEmail && senha === storedSenha) {
+        alert('Login bem-sucedido!');
+        sessionStorage.setItem('loggedIn', true); // Marca o usuário como logado
+        sessionStorage.setItem('userName', nome);  // Usa o e-mail como nome (você pode ajustar isso)
+        window.location.href = './index.html';  // Redireciona para a página principal após login
+    } else {
+        alert('E-mail ou senha incorretos');
+    }
+}
+
+
+
+
+        // Função para validar os dados do formulário de cadastro
+        function validarDados(nome, email, telefone, cpf, senha) {
+            if (!nome || !email || !telefone || !cpf || !senha) {
+                alert('Todos os campos são obrigatórios!');
+                return false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                return false;
+            }
+
+            if (cpf.length !== 11) {
+                alert('CPF deve ter 11 caracteres.');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Função para enviar os dados para o servidor
+        function cadastrarUsuario(nome, email, telefone, cpf, senha) {
+            const usuario = { nome, email, telefone, cpf, senha };
+
+            fetch('http://localhost:5000/usuario/insert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(usuario)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Usuário cadastrado com sucesso!');
+                    document.getElementById('cadastroForm').reset();
+                    sessionStorage.setItem('email', email);  // Salva o e-mail no sessionStorage
+                 sessionStorage.setItem('senha', senha);  // Salva a senha no sessionStorage
                     window.location.href = '../index.html';
                 } else {
-                    errorMessage.innerText = "E-mail ou senha incorretos";
-                    errorMessage.style.display = "block";
+                    alert('Erro ao cadastrar usuário. Tente novamente.');
                 }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao conectar com o servidor. Tente novamente.');
+            });
+        }
+
+        // Função para lidar com o envio do formulário de cadastro
+        function handleCadastro(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('cadastroEmail').value;
+            const telefone = document.getElementById('telefone').value;
+            const cpf = document.getElementById('cpf').value;
+            const senha = document.getElementById('senhaCadastro').value;
+
+            if (validarDados(nome, email, telefone, cpf, senha)) {
+                cadastrarUsuario(nome, email, telefone, cpf, senha);
             }
-        });
+            
+        }
+
+        // Adiciona o evento de envio no formulário de cadastro
+        document.getElementById('cadastroForm').addEventListener('submit', handleCadastro);
+
+
+
+
+
+
+
+        // Função para validar o login
+function validarLogin(email, senha) {
+    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
+    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
+
+    if (email === storedEmail && senha === storedSenha) {
+        alert('Login bem-sucedido!');
+        window.location.href = '../index.html';  // Redireciona para a página principal após login
+    } else {
+        alert('E-mail ou senha incorretos');
+    }
+}
+
+// Função para lidar com o envio do formulário de login
+function handleLogin(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('password').value;
+
+    if (!email || !senha) {
+        alert('Por favor, preencha todos os campos.');
+    } else {
+        validarLogin(email, senha);  // Valida as credenciais
+    }
+}
+
+// Adiciona o evento de envio no formulário de login
+document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+
+
+
+
+
     </script>
 </body>
 </html>
-

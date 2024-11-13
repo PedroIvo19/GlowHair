@@ -12,8 +12,8 @@
     <header>
         <nav>
             <ul id="nav-links">
-                <li><a href="../CuidadosCabelo/CuidadoCabelo.html">Produtos</a></li>
-                <li><a href="../TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
+                <li><a href="./CuidadosCabelo/CuidadoCabelo.html">Produtos</a></li>
+                <li><a href="./TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
                 <li><a href="../ProblemasCabelo/problemas.html">Problemas do Cabelo</a></li>
                 <li class="logo">
                     <a href="./index.html">
@@ -129,7 +129,7 @@
     <script>
         window.addEventListener("scroll", function() {
             const scrollPosition = window.scrollY;
-            document.querySelector("header").style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+            document.querySelector("header").style.backgroundPosition = center ${scrollPosition * 0.5}px;
         });
 
 
@@ -148,7 +148,7 @@
         
         // Cria um botão de perfil
         const profileButton = document.createElement('li');
-        profileButton.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+        profileButton.innerHTML = <a href="./Perfil/perfil.html">${userName}</a>;
         profileLink.parentNode.insertBefore(profileButton, profileLink);
         profileLink.style.display = 'none'; // Oculta o link de Perfil original
     }
@@ -159,5 +159,3 @@
 </script>
 </body>
 </html>
-
-
