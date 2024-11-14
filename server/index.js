@@ -40,20 +40,32 @@ app.use(
 
 app.use(express.json());
 
-//Busca no banco um registro específico de produto via ID
-app.get("/produto/:id", (req, res) => {
-  const id = req.params.id;
 
-  const sql = `SELECT * FROM tbl_produto WHERE id_produto = ${id}`;
+//BUSCAR SEMPRE O ULTIMO PRODUTO PARA A ANALISE
+app.get("/produto/ultimo", (req, res) => {
+  const sql = `SELECT * FROM tbl_produto ORDER BY id_produto DESC LIMIT 1`; // Buscar o último produto inserido
 
   conn.query(sql, (erro, dados) => {
     if (erro) {
-      console.log(erro);
+      console.error(erro);
+      return res.status(500).json({ error: "Erro ao buscar o produto" });
+    }
+
+    if (dados.length > 0) {
+      return res.json(dados[0]); // Retorna o último produto cadastrado
     } else {
-      res.json(dados[0]);
+      return res.status(404).json({ message: "Nenhum produto encontrado" });
     }
   });
 });
+
+
+
+
+
+
+
+
 
 //Busca no banco um registro específico de avaliacao via ID
 app.get("/avaliacao/:id", (req, res) => {
@@ -145,6 +157,47 @@ app.get("/usuario", (req, res) => {
     }
   });
 });
+
+
+
+
+// Rota de login corrigida
+app.post("/login", (req, res) => {
+  const { email, senha } = req.body;
+
+  // Verificar se email e senha foram fornecidos
+  if (!email || !senha) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Email e senha são obrigatórios" });
+  }
+
+  const sql = `SELECT * FROM tbl_usuario WHERE email = ? AND senha = ?`;
+
+  conn.query(sql, [email, senha], (erro, dados) => {
+    if (erro) {
+      console.error("Erro ao buscar usuário:", erro);
+      return res.status(500).json({ success: false, error: "Erro interno do servidor" });
+    }
+
+    if (dados.length > 0) {
+      const usuario = dados[0];
+      return res.json({
+        success: true,
+        message: "Login realizado com sucesso",
+        userName: usuario.nome_usuario,
+        userId: usuario.id_usuario,
+      });
+    } else {
+      return res.status(401).json({
+        success: false,
+        message: "Email ou senha incorretos",
+      });
+    }
+  });
+});
+
+
 
 //ROTAS PARA CADASTRO DE PRODUTO
 // app.get("/produto/cadastrar", (req, res) => {

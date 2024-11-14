@@ -22,37 +22,19 @@
                 <div class="field">
                     <label>Nome da Loja:</label>
                     <input type="text" readonly id="nomeLoja">
-                </div>      
+                </div>
                 <div class="field">
                     <label>Descrição:</label>
                     <input type="text" readonly id="descricaoProduto">
                 </div>
-                
                 <div class="field">
-                    <label for="categoria">Problema do Cabelo:</label>
-                    <select id="categoria" name="categoria" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
-                    <option value="queda" style="font-size: 18px;">Pontas Danificadas</option>
-                    <option value="oleosidade" style="font-size: 18px;">Cabelo Oleoso</option>
-                    <option value="ressecamento" style="font-size: 18px;">Cabelo Poroso</option>
-                    <option value="caspa" style="font-size: 18px;">Cabelo com Frizz</option>
-                    
-                    </select>
-
+                    <label>Problema do Cabelo:</label>
+                    <input type="text" readonly id="problemaCabelo">
                 </div>
-
                 <div class="field">
-                    <label for="tipoCabelo">Tipo de Cabelo:</label>
-                    <select id="tipoCabelo" name="tipoCabelo" style="width: 430px; font-size: 18px; padding: 10px; border-radius: 7px;">
-                    <option value="queda" style="font-size: 18px;">Cabelo Crespo</option>
-                    <option value="oleosidade" style="font-size: 18px;">Cabelo Cacheado</option>
-                    <option value="ressecamento" style="font-size: 18px;">Cabelo Ondulado</option>
-                    <option value="caspa" style="font-size: 18px;">Caspa</option>
-                    <option value="frizz" style="font-size: 18px;">Cabelo Liso</option>
-                    </select>
-
+                    <label>Tipo de Cabelo:</label>
+                    <input type="text" readonly id="tipoCabelo">
                 </div>
-
-
                 <div class="field">
                     <label>Benefícios:</label>
                     <textarea readonly id="beneficios"></textarea>
@@ -65,64 +47,65 @@
         </div>
         <div class="buttons">
             <button class="approve">Aprovar</button>
-            <button class="reject">Recusar</button>
+            <button class="reject" id="recusarBtn">Recusar</button>
         </div>
-    </div>
+        
+        <script>
 
-    <script>
-        const productData = JSON.parse(localStorage.getItem("productData"));
-        if (productData) {
-            document.getElementById("nomeProduto").value = productData.nomeProduto;
-            document.getElementById("nomeLoja").value = productData.nomeLoja;
-            document.getElementById("descricao").value = productData.descricao;
-            document.getElementById("problema").value = productData.problema;
-            document.getElementById("tipoCabelo").value = productData.tipoCabelo;
-            document.getElementById("beneficios").value = productData.beneficios;
-            document.getElementById("comoUsar").value = productData.comoUsar;
-            document.getElementById("productImage").src = localStorage.getItem("productImage");
-        }
+function limparCampos() {
+    document.getElementById("productImage").src = ""; // Limpa a imagem
+    document.getElementById("nomeProduto").value = "";
+    document.getElementById("nomeLoja").value = "";
+    document.getElementById("descricaoProduto").value = "";
+    document.getElementById("problemaCabelo").value = "";
+    document.getElementById("tipoCabelo").value = "";
+    document.getElementById("beneficios").value = "";
+    document.getElementById("comoUsar").value = "";
+}
 
-        // Limpar dados ao aprovar ou rejeitar
-        document.querySelector(".approve").addEventListener("click", function() {
-            localStorage.removeItem("productData");
-            alert("Produto aprovado!");
-        });
+// Adiciona o evento de clique para o botão "Recusar"
+document.getElementById("recusarBtn").addEventListener("click", function() {
+    limparCampos();
+    alert("Formulário limpo!"); // Mensagem de confirmação
+});
 
-        document.querySelector(".reject").addEventListener("click", function() {
-            localStorage.removeItem("productData");
-            document.getElementById("nomeProduto").value = "";
-            document.getElementById("nomeLoja").value = "";
-            document.getElementById("descricao").value = "";
-            document.getElementById("problemaCabelo").value = "";
-            document.getElementById("tipoCabelo").value = "";
-            document.getElementById("beneficios").value = "";
-            document.getElementById("comoUsar").value = "";
-            document.getElementById("productImage").src = ""; // Limpa a imagem
-            alert("Produto rejeitado.");
-        });
 
-        fetch('http://localhost:3001/api/produtos')
-        .then(response => response.json())
-        .then(products => {
-            const container = document.getElementById('product-list');
-            products.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.innerHTML = `
-                    <h2>${product.nomeProduto}</h2>
-                    <p>Nome do Produto: ${product.nomeProduto}</p>
-                    <p>Nome Loja: ${product.nomeLoja}</p>
-                    <p>Descricao: ${product.descricao}</p>
-                    <p>Problema do Cabelo: ${product.problema}</p>
-                    <p>Como Usar: ${product.comoUsar}</p>
-                    <img src="${product.imageUrl}" alt="${product.nomeProduto}">
-                `;
-                container.appendChild(productElement);
-            });
-        })
-        .catch(error => console.error('Erro ao carregar produtos:', error));
+fetch('http://localhost:5000/produto/ultimo')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro na resposta da API');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Último produto cadastrado:', data); // Verifique se o dado foi retornado corretamente
+    
+    if (data) {
+      // Preencher os campos do formulário com os dados retornados
+      document.getElementById("nomeProduto").value = data.nome_produto;
+      document.getElementById("nomeLoja").value = data.nome_loja;
+      document.getElementById("descricaoProduto").value = data.descricao;
+      document.getElementById("problemaCabelo").value = data.problema;
+      document.getElementById("tipoCabelo").value = data.tipo_cabelo;
+      document.getElementById("beneficios").value = data.beneficios;
+      document.getElementById("comoUsar").value = data.como_usar;
+    }
+  })
+  .catch(error => {
+    console.error('Erro ao buscar produto:', error); // Verifique erros
+  });
 
-       
+// Limpar dados ao aprovar ou rejeitar
+document.querySelector(".approve").addEventListener("click", function () {
+    alert("Produto aprovado!");
+});
 
-    </script>
+document.querySelector(".reject").addEventListener("click", function () {
+    // Limpar o formulário quando o produto for rejeitado
+    document.getElementById("productForm").reset(); // Limpa todos os campos do formulário
+    alert("Produto rejeitado. Formulário limpo!");
+});
+
+        </script>
 </body>
 </html>
