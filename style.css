@@ -11,12 +11,15 @@ body, html {
     background-color: #8F5231;
 }
 
+
+
 header {
   height: 50vh;
   background-image: url('./img/imagemcertaheader.png');
   background-size: cover;
   background-position: center;
   transition: background-position 0.1s ease-out;
+  
 }
 
 

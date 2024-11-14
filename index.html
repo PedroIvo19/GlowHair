@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowHair</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="./img/logo.svg" type="image/svg+xml">
 </head>
+
 <body>
+
+    <link rel="icon" href="./img/logo.ico" type="image/x-icon">
+
     <header>
         <nav>
             <ul id="nav-links">
@@ -36,7 +42,12 @@
             </div>
             <div class="text-container">
                 <h2>Sobre o Projeto</h2>
-                <p>O projeto "GlowHair" foi criado com o objetivo de preencher uma lacuna existente no cuidado pessoal, especificamente relacionado à saúde e à estética capilar. Muitas pessoas enfrentam desafios diários ao tentarem entender seus próprios tipos de cabelo, identificar as melhores práticas de cuidado e, principalmente, encontrar produtos adequados que atendam às suas necessidades específicas. Além disso, o mercado de cosméticos e produtos capilares oferece uma infinidade de opções, o que pode gerar confusão e incerteza para quem não possui conhecimento especializado.</p>
+                <p>O projeto "GlowHair" foi criado com o objetivo de preencher uma lacuna existente no cuidado pessoal,
+                    especificamente relacionado à saúde e à estética capilar. Muitas pessoas enfrentam desafios diários
+                    ao tentarem entender seus próprios tipos de cabelo, identificar as melhores práticas de cuidado e,
+                    principalmente, encontrar produtos adequados que atendam às suas necessidades específicas. Além
+                    disso, o mercado de cosméticos e produtos capilares oferece uma infinidade de opções, o que pode
+                    gerar confusão e incerteza para quem não possui conhecimento especializado.</p>
                 <button class="btn">Saiba Mais</button>
             </div>
         </div>
@@ -46,8 +57,13 @@
         <div class="texto-imagem-content">
             <div class="text-container">
                 <h2>Produtos para o seu Cabelo</h2>
-                <p>O projeto foi idealizado para atender tanto pessoas que já possuem uma rotina de cuidados capilares, quanto àquelas que estão começando a explorar esse universo, mas não sabem por onde começar. Ele busca oferecer não só soluções personalizadas, mas também um espaço acolhedor, onde as pessoas possam aprender, se identificar e se sentir mais confiantes em relação à própria imagem.
-                    Com a missão de transformar a relação das pessoas com seus cabelos, "GlowHair" promove a democratização do conhecimento sobre cuidados capilares, tornando-o acessível a todos e ajudando a construir uma jornada mais fácil e saudável para todos os tipos de cabelo.</p>
+                <p>O projeto foi idealizado para atender tanto pessoas que já possuem uma rotina de cuidados capilares,
+                    quanto àquelas que estão começando a explorar esse universo, mas não sabem por onde começar. Ele
+                    busca oferecer não só soluções personalizadas, mas também um espaço acolhedor, onde as pessoas
+                    possam aprender, se identificar e se sentir mais confiantes em relação à própria imagem.
+                    Com a missão de transformar a relação das pessoas com seus cabelos, "GlowHair" promove a
+                    democratização do conhecimento sobre cuidados capilares, tornando-o acessível a todos e ajudando a
+                    construir uma jornada mais fácil e saudável para todos os tipos de cabelo.</p>
                 <button class="btn">Saiba Mais</button>
             </div>
             <div class="image-container">
@@ -109,26 +125,35 @@
     </footer>
 
     <script>
+
+        window.addEventListener('scroll', function () {
+            const logo = document.querySelector('.logo img');
+            const scrollPosition = window.scrollY; // Pega a posição de rolagem
+            logo.style.transform = `translateY(${scrollPosition * 0.2}px)`; // Move a imagem conforme a rolagem
+        });
+
+
         document.addEventListener('DOMContentLoaded', () => {
-    const loginLink = document.getElementById('loginLink');
-    const registerLink = document.getElementById('registerLink');
-    const profileLink = document.getElementById('profileLink');
+            const loginLink = document.getElementById('loginLink');
+            const registerLink = document.getElementById('registerLink');
+            const profileLink = document.getElementById('profileLink');
 
-    // Verifica se o usuário está logado
-    const isLoggedIn = sessionStorage.getItem('loggedIn');
-    const userName = sessionStorage.getItem('userName');  // Recupera o nome do usuário
+            // Verifica se o usuário está logado
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+            const userName = sessionStorage.getItem('userName');  // Recupera o nome do usuário
 
-    if (isLoggedIn) {
-        loginLink.style.display = 'none';
-        registerLink.style.display = 'none';
-        
-        // Exibe o link de perfil com o nome do usuário
-        profileLink.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
-        profileLink.style.display = 'block';
-        console.log("Usuário logado: ", userName);
-    }
-});
+            if (isLoggedIn) {
+                loginLink.style.display = 'none';
+                registerLink.style.display = 'none';
+
+                // Exibe o link de perfil com o nome do usuário
+                profileLink.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+                profileLink.style.display = 'block';
+                console.log("Usuário logado: ", userName);
+            }
+        });
 
     </script>
 </body>
+
 </html>

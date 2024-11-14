@@ -104,7 +104,7 @@ p {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #1a2b3a;
+  background-color: #4a2417;
   color: white;
   border: none;
   border-radius: 5px;
@@ -151,17 +151,30 @@ p {
   text-align: center;
   font-size: 3em;
   font-weight: bold;
-  color: #ffffff; /* Azul claro para dar destaque */
+  color: #ffffff; /* Manter a cor clara */
   margin-top: 40px;
   padding: 10px;
   background: linear-gradient(135deg, #ffffff, #ffffff);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Sombras mais fortes */
   letter-spacing: 2px;
   border-radius: 10px;
   animation: tituloFade 2s ease-in-out;
+  position: relative; /* Adicionando para efeitos extra */
+}
+
+.titulo::after {
+  content: ''; 
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 5px;
+  background: #ffffff; /* Cor chamativa para a linha */
+  border-radius: 2px;
 }
 
 @keyframes tituloFade {
@@ -170,10 +183,11 @@ p {
     transform: translateY(-20px);
   }
   100% {
-    opacity: 1;
+    opacity: 15;
     transform: translateY(0);
   }
 }
+
 
 nav {
   display: flex;
