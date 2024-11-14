@@ -50,18 +50,18 @@
     </div>
 
     <script>
-        // const usuario = {
-        //     nome: "Jorge",
-        //     email: "jorge@gmail.com",
-        //     senha: "123"
-        // };
+
+
+
+
+
 
         const container = document.getElementById('container');
         const registerBtn = document.getElementById('register');
         const loginBtn = document.getElementById('login');
         const loginButton = document.getElementById('loginBtn');
         const errorMessage = document.getElementById('error-message');
-        
+
         registerBtn.addEventListener('click', () => {
             container.classList.add("active");
         });
@@ -70,78 +70,42 @@
             container.classList.remove("active");
         });
 
-        // loginButton.addEventListener('click', (event) => {
-        //     event.preventDefault();
-
-        //     const email = document.getElementById('email').value;
-        //     const password = document.getElementById('password').value;
-
-        //     if (!email || !password) {
-        //         errorMessage.innerText = "Não pode deixar em branco";
-        //         errorMessage.style.display = "block";
-        //     } else {
-        //         errorMessage.style.display = "none";
-
-        //         if (email === usuario.email && password === usuario.senha) {
-        //             sessionStorage.setItem('loggedIn', true);
-        //             sessionStorage.setItem('userName', usuario.nome);
-        //             window.location.href = '../index.html';
-        //         } else {
-        //             errorMessage.innerText = "E-mail ou senha incorretos";
-        //             errorMessage.style.display = "block";
-        //         }
-        //     }
-        // });
 
 
-
-        
 
         fetch('http://localhost:5000/usuario', {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'application/json' }
-                })
-                .then(response => {
-                    response.map((usuario) => {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => {
+                // Verifica se a resposta é bem-sucedida
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar usuários.');
+                }
+                return response.json(); // Converte a resposta em JSON
+            })
+            .then(usuarios => {
+                // Verifica se a resposta contém usuários
+                if (!Array.isArray(usuarios)) {
+                    throw new Error('Dados dos usuários inválidos');
+                }
+
+                usuarios.forEach(usuario => {
+                    // Verifica se todos os campos necessários estão presentes
+                    if (usuario.email && usuario.senha && usuario.nome) {
                         validarLogin(usuario.email, usuario.senha, usuario.nome);
-                    })
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Erro ao conectar com o servidor. Tente novamente.');
+                    } else {
+                        console.error('Dados do usuário incompletos:', usuario);
+                    }
                 });
-
-function validarLogin(email, senha, nome) {
-
-    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
-    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
-    
-    if (email === storedEmail && senha === storedSenha) {
-        alert('Login bem-sucedido!');
-        sessionStorage.setItem('loggedIn', true); // Marca o usuário como logado
-        sessionStorage.setItem('userName', nome);  // Usa o e-mail como nome (você pode ajustar isso)
-        window.location.href = './index.html';  // Redireciona para a página principal após login
-    } else {
-        alert('E-mail ou senha incorretos');
-    }
-}
-
-function validarLogin(email, senha, nome) {
-
-    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
-    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
-    
-    if (email === storedEmail && senha === storedSenha) {
-        alert('Login bem-sucedido!');
-        sessionStorage.setItem('loggedIn', true); // Marca o usuário como logado
-        sessionStorage.setItem('userName', nome);  // Usa o e-mail como nome (você pode ajustar isso)
-        window.location.href = './index.html';  // Redireciona para a página principal após login
-    } else {
-        alert('E-mail ou senha incorretos');
-    }
-}
-
-
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                // Remove o alert para evitar pop-up indesejado
+                if (!error.message.includes('Failed to fetch')) {
+                    alert('Erro ao conectar com o servidor. Tente novamente.');
+                }
+            });
 
 
         // Função para validar os dados do formulário de cadastro
@@ -165,7 +129,9 @@ function validarLogin(email, senha, nome) {
             return true;
         }
 
-        // Função para enviar os dados para o servidor
+
+
+        // Função para cadastrar o usuário
         function cadastrarUsuario(nome, email, telefone, cpf, senha) {
             const usuario = { nome, email, telefone, cpf, senha };
 
@@ -174,22 +140,25 @@ function validarLogin(email, senha, nome) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuario)
             })
-            .then(response => {
-                if (response.ok) {
-                    alert('Usuário cadastrado com sucesso!');
-                    document.getElementById('cadastroForm').reset();
-                    sessionStorage.setItem('email', email);  // Salva o e-mail no sessionStorage
-                 sessionStorage.setItem('senha', senha);  // Salva a senha no sessionStorage
-                    window.location.href = '../index.html';
-                } else {
-                    alert('Erro ao cadastrar usuário. Tente novamente.');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro ao conectar com o servidor. Tente novamente.');
-            });
+                .then(response => {
+                    if (response.ok) {
+                        alert('Usuário cadastrado com sucesso!');
+                        document.getElementById('cadastroForm').reset();
+                        sessionStorage.setItem('email', email);  // Salva o e-mail no sessionStorage
+                        sessionStorage.setItem('senha', senha);  // Salva a senha no sessionStorage
+                        sessionStorage.setItem('userName', nome);  // Salva o nome no sessionStorage
+                        console.log('Nome armazenado no sessionStorage:', sessionStorage.getItem('userName'));
+                        window.location.href = '../index.html';  // Redireciona para a página principal
+                    } else {
+                        alert('Erro ao cadastrar usuário. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao conectar com o servidor. Tente novamente.');
+                });
         }
+
 
         // Função para lidar com o envio do formulário de cadastro
         function handleCadastro(event) {
@@ -204,7 +173,7 @@ function validarLogin(email, senha, nome) {
             if (validarDados(nome, email, telefone, cpf, senha)) {
                 cadastrarUsuario(nome, email, telefone, cpf, senha);
             }
-            
+
         }
 
         // Adiciona o evento de envio no formulário de cadastro
@@ -212,45 +181,52 @@ function validarLogin(email, senha, nome) {
 
 
 
-
-
-
-
         // Função para validar o login
-function validarLogin(email, senha) {
-    const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
-    const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
+        function validarLogin(email, senha) {
+            const storedEmail = sessionStorage.getItem('email');  // Obtém o e-mail salvo
+            const storedSenha = sessionStorage.getItem('senha');  // Obtém a senha salva
+            const nomeUsuario = sessionStorage.getItem('userName');  // Obtém o nome salvo
 
-    if (email === storedEmail && senha === storedSenha) {
-        alert('Login bem-sucedido!');
-        window.location.href = '../index.html';  // Redireciona para a página principal após login
-    } else {
-        alert('E-mail ou senha incorretos');
-    }
-}
+            console.log('Email armazenado:', storedEmail);
+            console.log('Senha armazenada:', storedSenha);
+            console.log('Nome armazenado:', nomeUsuario);
 
-// Função para lidar com o envio do formulário de login
-function handleLogin(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('password').value;
-
-    if (!email || !senha) {
-        alert('Por favor, preencha todos os campos.');
-    } else {
-        validarLogin(email, senha);  // Valida as credenciais
-    }
-}
-
-// Adiciona o evento de envio no formulário de login
-document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            if (email === storedEmail && senha === storedSenha) {
+                if (nomeUsuario) {
+                    // Se o nome do usuário foi encontrado, continua o login
+                    sessionStorage.setItem('loggedIn', 'true');  // Marca como logado
+                    alert(`Bem-vindo, ${nomeUsuario}!`);
+                    window.location.href = '../index.html';  // Redireciona para a página principal após login
+                } else {
+                    alert('Erro: Nome do usuário não encontrado no sistema.');
+                }
+            } else {
+                alert('E-mail ou senha incorretos');
+            }
+        }
 
 
 
 
 
+        // Função para lidar com o envio do formulário de login
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('password').value;
+
+            if (!email || !senha) {
+                alert('Por favor, preencha todos os campos.');
+            } else {
+                validarLogin(email, senha);  // Valida as credenciais
+            }
+        }
+
+        // Adiciona o evento de envio no formulário de login
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
 
     </script>
 </body>
+
 </html>

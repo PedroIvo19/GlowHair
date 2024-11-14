@@ -110,23 +110,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const loginLink = document.getElementById('loginLink');
-            const registerLink = document.getElementById('registerLink');
-            const profileLink = document.getElementById('profileLink');
+    const loginLink = document.getElementById('loginLink');
+    const registerLink = document.getElementById('registerLink');
+    const profileLink = document.getElementById('profileLink');
 
-            // Verifica se o usuário está logado
-            const isLoggedIn = sessionStorage.getItem('loggedIn');
-            const userName = sessionStorage.getItem('userName');
+    // Verifica se o usuário está logado
+    const isLoggedIn = sessionStorage.getItem('loggedIn');
+    const userName = sessionStorage.getItem('userName');  // Recupera o nome do usuário
 
-            if (isLoggedIn) {
-                loginLink.style.display = 'none';
-                registerLink.style.display = 'none';
-                
-                // Exibe o link de perfil com o nome do usuário
-                profileLink.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
-                profileLink.style.display = 'block';
-            }
-        });
+    if (isLoggedIn) {
+        loginLink.style.display = 'none';
+        registerLink.style.display = 'none';
+        
+        // Exibe o link de perfil com o nome do usuário
+        profileLink.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+        profileLink.style.display = 'block';
+        console.log("Usuário logado: ", userName);
+    }
+});
+
     </script>
 </body>
 </html>

@@ -62,11 +62,6 @@ app.get("/produto/ultimo", (req, res) => {
 
 
 
-
-
-
-
-
 //Busca no banco um registro específico de avaliacao via ID
 app.get("/avaliacao/:id", (req, res) => {
   const id = req.params.id;
@@ -83,8 +78,9 @@ app.get("/avaliacao/:id", (req, res) => {
 });
 
 
-//Busca no banco um registro específico de usuario via ID
 
+
+//Busca no banco um registro específico de usuario via ID
 app.get("/usuario/:id", (req, res) => {
   const id = req.params.id;
 
@@ -100,24 +96,6 @@ app.get("/usuario/:id", (req, res) => {
 });
 
 
-app.post("/usuario/atualizar", (req, res) => {
-  const nome_usuario = req.body.nomeUsuario;
-  const email = req.body.email;
-  const senha = req.body.senha;
-  const telefone = req.body.telefone;
-  const tipo_usuario = req.body.tipoUsuario;
-  const cpf = req.body.cpf;
-
-  const sql = `UPDATE tbl_usuario SET email =  nome_usuario= '${nome_usuario}', email ='${email}', senha='${senha}', telefone = '${telefone}' , tipo_usuario = '${tipo_usuario}' , cpf = '${cpf}' WHERE id_usuario = ${id}`;
-
-  conn.query(sql, (erro) => {
-    if (erro) {
-      console.log(erro);
-    } else {
-      res.sendFile(`${basePath}/`);
-    }
-  });
-});
 
 //rota para pegar lista de produtos do banco
 app.get("/produto", (req, res) => {
@@ -132,6 +110,8 @@ app.get("/produto", (req, res) => {
   });
 });
 
+
+
 //rota para pegar lista de AVALIACAO do banco
 app.get("/avaliacao", (req, res) => {
   const sql = `SELECT * FROM tbl_avaliacao`;
@@ -144,6 +124,7 @@ app.get("/avaliacao", (req, res) => {
     }
   });
 });
+
 
 //rota para pegar lista de usuarios do banco
 app.get("/usuario", (req, res) => {
@@ -162,7 +143,7 @@ app.get("/usuario", (req, res) => {
 
 
 // Rota de login corrigida
-app.post("/login", (req, res) => {
+app.get("/login", (req, res) => {
   const { email, senha } = req.body;
 
   // Verificar se email e senha foram fornecidos
@@ -282,4 +263,3 @@ app.post("/avaliacao/insert", (req, res) => {
     }
   });
 });
-
