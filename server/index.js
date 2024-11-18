@@ -61,6 +61,54 @@ app.get("/produto/ultimo", (req, res) => {
 
 
 
+app.get("/produto/aprovados", (req, res) => {
+  const sql = "SELECT * FROM tbl_produto WHERE status = 1";
+
+  conn.query(sql, (erro, resultados) => {
+    if (erro) {
+      console.log(erro);
+      res.status(500).json({ erro: "Erro ao buscar produtos aprovados" });
+    } else {
+      res.status(200).json(resultados);
+    }
+  });
+});
+
+
+
+
+// // Aprovar Produto
+// app.get("/produto/aprovar", (req, res) => {
+//   const sql = `UPDATE tbl_produto SET status = 1 WHERE id_produto = (SELECT id_produto FROM tbl_produto ORDER BY id_produto DESC LIMIT 1)`;
+
+//   conn.query(sql, (erro) => {
+//     if (erro) {
+//       console.error(erro);
+//       return res.status(500).json({ error: "Erro ao aprovar produto" });
+//     }
+//     res.status(200).json("Produto aprovado com sucesso");
+//   });
+// });
+
+
+// Rejeitar Produto
+app.put("/produto/rejeitar", (req, res) => {
+  const sql = `UPDATE tbl_produto SET status = -1 WHERE id_produto = (SELECT id_produto FROM tbl_produto ORDER BY id_produto DESC LIMIT 1)`;
+
+  conn.query(sql, (erro) => {
+    if (erro) {
+      console.error(erro);
+      return res.status(500).json({ error: "Erro ao rejeitar produto" });
+    }
+    res.status(200).json("Produto rejeitado com sucesso");
+  });
+});
+ 
+
+
+
+
+
 
 //Busca no banco um registro específico de avaliacao via ID
 app.get("/avaliacao/:id", (req, res) => {
@@ -190,6 +238,7 @@ app.get("/login", (req, res) => {
 // app.get("/produto/cadastrar", (req, res) => {
 //   res.sendFile(`${basePath}/cadastrarproduto.html`);
 // });
+
 
 app.post("/produto/insert", (req, res) => {
   const nome_produto = req.body.nomeProduto;

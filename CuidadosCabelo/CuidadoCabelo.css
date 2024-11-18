@@ -141,6 +141,13 @@ a:hover {
     background-color: #3b4c5d;
 }
 
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que os itens vão para a próxima linha se não couberem */
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center; /* Alinha os cards ao centro */
+  }
+
 
 /*ESTRELAS AVALIAÇÃO*/
 .card {

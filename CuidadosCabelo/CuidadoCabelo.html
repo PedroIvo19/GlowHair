@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
     <link rel="stylesheet" href="CuidadoCabelo.css">
     <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
 </head>
+
 <body>
     <link rel="icon" href="../img/logo.ico" type="image/x-icon">
 
     <header>
         <nav>
-         
+
             <ul id="nav-links">
                 <li><a href="./CuidadoCabelo.html">Produtos</a></li>
                 <li><a href="../TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
@@ -30,11 +32,14 @@
     </header>
 
 
-     <!-- Seção Cuidados para o Cabelo -->
-     <section class="cuidados-cabelo">
+    <!-- Seção Cuidados para o Cabelo -->
+    <section class="cuidados-cabelo">
         <h1>Cuidados para o seu Cabelo</h1>
         <div class="texto-container">
-            <p>Sejam lisos, cacheados, curtos, longos, coloridos, fracos, secos ou oleosos. Iremos te ajudar a mostrar produtos que irão limpar, nutrir, fortalecer, suavizar, reparar e proteger de acordo, especificamente, com o seu tipo de cabelo. Confira as varias marcas de shampoo, condicionador, óleo, leave-in, creme para tratamento e creme de pentear. E descubra que o produto certo para você.</p>
+            <p>Sejam lisos, cacheados, curtos, longos, coloridos, fracos, secos ou oleosos. Iremos te ajudar a mostrar
+                produtos que irão limpar, nutrir, fortalecer, suavizar, reparar e proteger de acordo, especificamente,
+                com o seu tipo de cabelo. Confira as varias marcas de shampoo, condicionador, óleo, leave-in, creme para
+                tratamento e creme de pentear. E descubra que o produto certo para você.</p>
         </div>
 
         <!-- Retângulo de Filtro de Busca -->
@@ -50,218 +55,357 @@
                 <button onclick="filtrarProdutos('antipoluicao')">Cabelo com Frizz</button>
             </div>
 
-          
+
 
             <!-- Seção Tipo de Cabelo -->
             <h3>Tipo de Cabelo</h3>
             <div class="botoes-tipo-cabelo">
                 <button onclick="filtrarProdutos('cabelo-normal')">Cabelo Crespo</button>
-                <button onclick="filtrarProdutos('cabelo-cacheado')">Cabelo Cacheado</button>                    
+                <button onclick="filtrarProdutos('cabelo-cacheado')">Cabelo Cacheado</button>
                 <button onclick="filtrarProdutos('cabelo-longo')">Cabelo Ondulado</button>
                 <button onclick="filtrarProdutos('cabelo-liso')">Cabelo Liso</button>
-                
+
             </div>
         </div>
     </section>
 
 
-        
-   <!-- CARD DOS PRODUTOS -->
-<div class="card-container">
-    <div class="card" data-problema="pontas-danificadas" data-tipo="normal">
-        <img src="../img/shampooSeda.avif" alt="Seda Shampoo">
-        <h2>SEDA</h2>
-        <p>Shampoo para força antiquebra com Mel e Aveia - 325ml</p>
-        <div class="rating">
-            <input value="5" name="rate1" id="star5_1" type="radio">
-            <label title="text" for="star5_1"></label>
-            <input value="4" name="rate1" id="star4_1" type="radio">
-            <label title="text" for="star4_1"></label>
-            <input value="3" name="rate1" id="star3_1" type="radio" checked="">
-            <label title="text" for="star3_1"></label>
-            <input value="2" name="rate1" id="star2_1" type="radio">
-            <label title="text" for="star2_1"></label>
-            <input value="1" name="rate1" id="star1_1" type="radio">
-            <label title="text" for="star1_1"></label>
+
+    <!-- CARD DOS PRODUTOS -->
+    <div class="card-container">
+        <div class="card" data-problema="pontas-danificadas" data-tipo="normal">
+            <img src="../img/shampooSeda.avif" alt="Seda Shampoo">
+            <h2>SEDA</h2>
+            <p>Shampoo para força antiquebra com Mel e Aveia - 325ml</p>
+            <div class="rating">
+                <input value="5" name="rate1" id="star5_1" type="radio">
+                <label title="text" for="star5_1"></label>
+                <input value="4" name="rate1" id="star4_1" type="radio">
+                <label title="text" for="star4_1"></label>
+                <input value="3" name="rate1" id="star3_1" type="radio" checked="">
+                <label title="text" for="star3_1"></label>
+                <input value="2" name="rate1" id="star2_1" type="radio">
+                <label title="text" for="star2_1"></label>
+                <input value="1" name="rate1" id="star1_1" type="radio">
+                <label title="text" for="star1_1"></label>
+            </div>
+            <a href="#" class="button">Visualizar Produto</a>
         </div>
-        <a href="#" class="button">Visualizar Produto</a>
-    </div>
 
-    <div class="card" data-problema="cabelo-oleoso" data-tipo="cacheado">
-        <img src="../img/mascara-elseve.webp" alt="Seda Shampoo">
-        <h2>Mascára Capilar - Elseve</h2>
-        <p>A Máscara Capilar de Tratamento Elseve - 300g</p>
-        <div class="rating">
-            <input value="5" name="rate2" id="star5_2" type="radio">
-            <label title="text" for="star5_2"></label>
-            <input value="4" name="rate2" id="star4_2" type="radio">
-            <label title="text" for="star4_2"></label>
-            <input value="3" name="rate2" id="star3_2" type="radio" checked="">
-            <label title="text" for="star3_2"></label>
-            <input value="2" name="rate2" id="star2_2" type="radio">
-            <label title="text" for="star2_2"></label>
-            <input value="1" name="rate2" id="star1_2" type="radio">
-            <label title="text" for="star1_2"></label>
+        <div class="card" data-problema="cabelo-oleoso" data-tipo="cacheado">
+            <img src="../img/mascara-elseve.webp" alt="Seda Shampoo">
+            <h2>Mascára Capilar - Elseve</h2>
+            <p>A Máscara Capilar de Tratamento Elseve - 300g</p>
+            <div class="rating">
+                <input value="5" name="rate2" id="star5_2" type="radio">
+                <label title="text" for="star5_2"></label>
+                <input value="4" name="rate2" id="star4_2" type="radio">
+                <label title="text" for="star4_2"></label>
+                <input value="3" name="rate2" id="star3_2" type="radio" checked="">
+                <label title="text" for="star3_2"></label>
+                <input value="2" name="rate2" id="star2_2" type="radio">
+                <label title="text" for="star2_2"></label>
+                <input value="1" name="rate2" id="star1_2" type="radio">
+                <label title="text" for="star1_2"></label>
+            </div>
+            <a href="../Produto/produto.html" class="button">Visualizar Produto</a>
         </div>
-        <a href="../Produto/produto.html" class="button">Visualizar Produto</a>
-    </div>
 
-    <div class="card" data-problema="cabelo-embaracado" data-tipo="liso">
-        <img src="../img/mascara-eudora.webp" alt="Seda Shampoo">
-        <h2>Mascára Capilar - Eudora</h2>
-        <p>Máscara Capilar Siàge Reconstrói Os Fios 250g</p>
-        <div class="rating">
-            <input value="5" name="rate3" id="star5_3" type="radio">
-            <label title="text" for="star5_3"></label>
-            <input value="4" name="rate3" id="star4_3" type="radio">
-            <label title="text" for="star4_3"></label>
-            <input value="3" name="rate3" id="star3_3" type="radio" checked="">
-            <label title="text" for="star3_3"></label>
-            <input value="2" name="rate3" id="star2_3" type="radio">
-            <label title="text" for="star2_3"></label>
-            <input value="1" name="rate3" id="star1_3" type="radio">
-            <label title="text" for="star1_3"></label>
+        <div class="card" data-problema="cabelo-embaracado" data-tipo="liso">
+            <img src="../img/mascara-eudora.webp" alt="Seda Shampoo">
+            <h2>Mascára Capilar - Eudora</h2>
+            <p>Máscara Capilar Siàge Reconstrói Os Fios 250g</p>
+            <div class="rating">
+                <input value="5" name="rate3" id="star5_3" type="radio">
+                <label title="text" for="star5_3"></label>
+                <input value="4" name="rate3" id="star4_3" type="radio">
+                <label title="text" for="star4_3"></label>
+                <input value="3" name="rate3" id="star3_3" type="radio" checked="">
+                <label title="text" for="star3_3"></label>
+                <input value="2" name="rate3" id="star2_3" type="radio">
+                <label title="text" for="star2_3"></label>
+                <input value="1" name="rate3" id="star1_3" type="radio">
+                <label title="text" for="star1_3"></label>
+            </div>
+            <a href="#" class="button">Visualizar Produto</a>
         </div>
-        <a href="#" class="button">Visualizar Produto</a>
-    </div>
 
-    <div class="card" data-problema="antipoluicao" data-tipo="fino">
-        <img src="../img/reparador.webp" alt="Seda Shampoo">
-        <h2>Tônico de Crescimento</h2>
-        <p>Lola Cosmetics Rapunzel - Tônico Capilar 250ml</p>
-        <div class="rating">
-            <input value="5" name="rate4" id="star5_4" type="radio">
-            <label title="text" for="star5_4"></label>
-            <input value="4" name="rate4" id="star4_4" type="radio">
-            <label title="text" for="star4_4"></label>
-            <input value="3" name="rate4" id="star3_4" type="radio" checked="">
-            <label title="text" for="star3_4"></label>
-            <input value="2" name="rate4" id="star2_4" type="radio">
-            <label title="text" for="star2_4"></label>
-            <input value="1" name="rate4" id="star1_4" type="radio">
-            <label title="text" for="star1_4"></label>
+        <div class="card" data-problema="antipoluicao" data-tipo="fino">
+            <img src="../img/reparador.webp" alt="Seda Shampoo">
+            <h2>Tônico de Crescimento</h2>
+            <p>Lola Cosmetics Rapunzel - Tônico Capilar 250ml</p>
+            <div class="rating">
+                <input value="5" name="rate4" id="star5_4" type="radio">
+                <label title="text" for="star5_4"></label>
+                <input value="4" name="rate4" id="star4_4" type="radio">
+                <label title="text" for="star4_4"></label>
+                <input value="3" name="rate4" id="star3_4" type="radio" checked="">
+                <label title="text" for="star3_4"></label>
+                <input value="2" name="rate4" id="star2_4" type="radio">
+                <label title="text" for="star2_4"></label>
+                <input value="1" name="rate4" id="star1_4" type="radio">
+                <label title="text" for="star1_4"></label>
+            </div>
+            <a href="#" class="button">Visualizar Produto</a>
         </div>
-        <a href="#" class="button">Visualizar Produto</a>
-    </div>
 
-    <div class="card">
-        <img src="../img/condicionador-pantene.webp" alt="Seda Shampoo">
-        <h2>condicionador - Eudora</h2>
-        <p>SIAGE Siàge Condicionador Glow Expert 200Ml</p>
-        <div class="rating">
-            <input value="5" name="rate5" id="star5_5" type="radio">
-            <label title="text" for="star5_5"></label>
-            <input value="4" name="rate5" id="star4_5" type="radio">
-            <label title="text" for="star4_5"></label>
-            <input value="3" name="rate5" id="star3_5" type="radio" checked="">
-            <label title="text" for="star3_5"></label>
-            <input value="2" name="rate5" id="star2_5" type="radio">
-            <label title="text" for="star2_5"></label>
-            <input value="1" name="rate5" id="star1_5" type="radio">
-            <label title="text" for="star1_5"></label>
+        <div class="card">
+            <img src="../img/condicionador-pantene.webp" alt="Seda Shampoo">
+            <h2>condicionador - Eudora</h2>
+            <p>SIAGE Siàge Condicionador Glow Expert 200Ml</p>
+            <div class="rating">
+                <input value="5" name="rate5" id="star5_5" type="radio">
+                <label title="text" for="star5_5"></label>
+                <input value="4" name="rate5" id="star4_5" type="radio">
+                <label title="text" for="star4_5"></label>
+                <input value="3" name="rate5" id="star3_5" type="radio" checked="">
+                <label title="text" for="star3_5"></label>
+                <input value="2" name="rate5" id="star2_5" type="radio">
+                <label title="text" for="star2_5"></label>
+                <input value="1" name="rate5" id="star1_5" type="radio">
+                <label title="text" for="star1_5"></label>
+            </div>
+            <a href="#" class="button">Visualizar Produto</a>
         </div>
-        <a href="#" class="button">Visualizar Produto</a>
     </div>
-</div>
-<br>
+    <br>
 
 
 
-   
+    <button id="buscarProdutos">Buscar Produtos</button>
+    <pre id="resultado"></pre>
 
-    
-    
 
-<script>
-let filtroAtual = null; // Variável para armazenar o filtro atual
+    <h1>Lista de Produtos Aprovados</h1>
+  <div id="produtosContainer" class="produtos-container"></div>
 
-function filtrarProdutos(filtro) {
-    const cards = document.querySelectorAll('.card');
-    let algumProdutoEncontrado = false;
-
-    // Se o filtro atual é o mesmo que o novo filtro, limpa o filtro e exibe todos os produtos
-    if (filtroAtual === filtro) {
-        limparFiltro(); // Chama a função de limpar filtro
-        return;
+  <script>
+    // Função para buscar os produtos aprovados
+    async function buscarProdutosAprovados() {
+      try {
+        const response = await fetch("http://localhost:5000/produto/aprovados");
+        if (!response.ok) {
+          throw new Error("Erro na requisição: " + response.status);
+        }
+        const produtos = await response.json();
+        renderizarProdutos(produtos);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
     }
 
-    // Se o filtro for diferente, aplica o novo filtro
-    filtroAtual = filtro;
+    // Função para renderizar os produtos dinamicamente
+    function renderizarProdutos(produtos) {
+      const container = document.getElementById("produtosContainer");
+      container.innerHTML = ""; // Limpa o conteúdo anterior
 
-    cards.forEach(card => {
-        const problema = card.getAttribute('data-problema');
-        const tipo = card.getAttribute('data-tipo');
+      produtos.forEach(produto => {
+        // Criação do card
+        const card = document.createElement("div");
+        card.className = "card";
 
-        if (problema === filtro || tipo === filtro) {
-            card.style.display = 'block';
-            algumProdutoEncontrado = true;
+        // Imagem do produto (usa uma imagem padrão se estiver null)
+        const img = document.createElement("img");
+        img.src = produto.imagem ? produto.imagem : "../img/mascara-elseve.webp";
+        img.alt = produto.nome_produto;
+
+        // Título do produto
+        const titulo = document.createElement("h2");
+        titulo.textContent = produto.nome_produto + " - " + produto.nome_loja;
+
+        // Descrição do produto
+        const descricao = document.createElement("p");
+        descricao.textContent = produto.descricao;
+
+        // Sistema de avaliação (rating)
+        const rating = document.createElement("div");
+        rating.className = "rating";
+        for (let i = 5; i >= 1; i--) {
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `rate${produto.id_produto}`;
+          input.id = `star${i}_${produto.id_produto}`;
+          input.value = i;
+          if (i === Math.round(produto.nota)) input.checked = true;
+
+          const label = document.createElement("label");
+          label.setAttribute("for", `star${i}_${produto.id_produto}`);
+          rating.appendChild(input);
+          rating.appendChild(label);
+        }
+
+        // Botão de Visualizar Produto
+        const button = document.createElement("a");
+        button.href = "#";
+        button.className = "button";
+        button.textContent = "Visualizar Produto";
+
+        // Montar o card
+        card.appendChild(img);
+        card.appendChild(titulo);
+        card.appendChild(descricao);
+        card.appendChild(rating);
+        card.appendChild(button);
+
+        // Adicionar o card ao container
+        container.appendChild(card);
+      });
+    }
+
+    // Chamar a função ao carregar a página
+    buscarProdutosAprovados();
+  </script>
+
+
+
+  
+    <script>
+      document.getElementById("buscarProdutos").addEventListener("click", () => {
+        fetch("http://localhost:5000/produto/aprovados")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro na requisição: " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Produtos Aprovados:", data);
+            document.getElementById("resultado").textContent = JSON.stringify(data, null, 2);
+          })
+          .catch((erro) => {
+            console.error("Erro ao buscar produtos:", erro);
+          });
+      });
+    </script>
+
+
+
+
+    <script>
+        let filtroAtual = null; // Variável para armazenar o filtro atual
+
+        function filtrarProdutos(filtro) {
+            const cards = document.querySelectorAll('.card');
+            let algumProdutoEncontrado = false;
+
+            // Se o filtro atual é o mesmo que o novo filtro, limpa o filtro e exibe todos os produtos
+            if (filtroAtual === filtro) {
+                limparFiltro(); // Chama a função de limpar filtro
+                return;
+            }
+
+            // Se o filtro for diferente, aplica o novo filtro
+            filtroAtual = filtro;
+
+            cards.forEach(card => {
+                const problema = card.getAttribute('data-problema');
+                const tipo = card.getAttribute('data-tipo');
+
+                if (problema === filtro || tipo === filtro) {
+                    card.style.display = 'block';
+                    algumProdutoEncontrado = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (!algumProdutoEncontrado) {
+                alert('Nenhum produto encontrado para esse filtro.');
+            }
+
+            // Destaca o botão ativo
+            const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
+            buttons.forEach(button => {
+                button.classList.remove('active'); // Remove a classe de ativo
+                if (button.innerText === filtro.replace('-', ' ').toUpperCase()) {
+                    button.classList.add('active'); // Adiciona a classe ao botão ativo
+                }
+            });
+        }
+
+        // Função para limpar o filtro e exibir todos os produtos
+        function limparFiltro() {
+            const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
+            buttons.forEach(button => {
+                button.classList.remove('active'); // Remove a classe de ativo
+            });
+
+            // Resetar o filtro atual
+            filtroAtual = null;
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.display = 'block'; // Mostrar todos os produtos
+            });
+        }
+
+
+
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('loginLink');
+            const registerLink = document.getElementById('registerLink');
+            const profileLink = document.getElementById('profileLink');
+
+            // Verifica se o usuário está logado
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+            const userName = sessionStorage.getItem('userName');
+
+            if (isLoggedIn) {
+                loginLink.style.display = 'none'; // Oculta o link de Login
+                registerLink.style.display = 'none'; // Oculta o link de Registrar
+
+                // Cria um botão de perfil
+                const profileButton = document.createElement('li');
+                profileButton.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+                profileLink.parentNode.insertBefore(profileButton, profileLink);
+                profileLink.style.display = 'none'; // Oculta o link de Perfil original
+            }
+        });
+
+
+
+
+
+       // Seleciona o container onde os cards serão exibidos
+const cardContainer = document.querySelector('.card-container');
+
+// Tentamos buscar os produtos aprovados do backend
+fetch("http://localhost:5000/produto/aprovados")
+    .then((response) => response.json()) // Converte a resposta para JSON
+    .then((produtos) => {
+        cardContainer.innerHTML = ""; // Limpa o container antes de adicionar novos produtos
+
+        // Verifica se a resposta contém produtos
+        if (produtos.length > 0) {
+            produtos.forEach((produto) => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.innerHTML = `
+                    <img src="../img/shampooSeda.avif" alt="${produto.nome_produto}">
+                    <h2>${produto.nome_produto}</h2>
+                    <p>${produto.descricao}</p>
+                    <a href="#" class="button">Visualizar Produto</a>
+                `;
+                cardContainer.appendChild(card);
+            });
         } else {
-            card.style.display = 'none';
+            console.log("Nenhum produto aprovado encontrado no servidor.");
         }
+    })
+    .catch((error) => {
+        console.error("Erro ao buscar produtos aprovados:", error);
     });
 
-    if (!algumProdutoEncontrado) {
-        alert('Nenhum produto encontrado para esse filtro.');
-    }
-
-    // Destaca o botão ativo
-    const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
-    buttons.forEach(button => {
-        button.classList.remove('active'); // Remove a classe de ativo
-        if (button.innerText === filtro.replace('-', ' ').toUpperCase()) {
-            button.classList.add('active'); // Adiciona a classe ao botão ativo
-        }
-    });
-}
-
-// Função para limpar o filtro e exibir todos os produtos
-function limparFiltro() {
-    const buttons = document.querySelectorAll('.botoes-problema button, .botoes-tipo-cabelo button');
-    buttons.forEach(button => {
-        button.classList.remove('active'); // Remove a classe de ativo
-    });
-
-    // Resetar o filtro atual
-    filtroAtual = null;
-
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.style.display = 'block'; // Mostrar todos os produtos
-    });
-}
-
-        
-        
-
-</script>
-
-<script>
-      document.addEventListener('DOMContentLoaded', () => {
-    const loginLink = document.getElementById('loginLink');
-    const registerLink = document.getElementById('registerLink');
-    const profileLink = document.getElementById('profileLink');
-
-    // Verifica se o usuário está logado
-    const isLoggedIn = sessionStorage.getItem('loggedIn');
-    const userName = sessionStorage.getItem('userName');
-
-    if (isLoggedIn) {
-        loginLink.style.display = 'none'; // Oculta o link de Login
-        registerLink.style.display = 'none'; // Oculta o link de Registrar
-        
-        // Cria um botão de perfil
-        const profileButton = document.createElement('li');
-        profileButton.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
-        profileLink.parentNode.insertBefore(profileButton, profileLink);
-        profileLink.style.display = 'none'; // Oculta o link de Perfil original
-    }
-});
-
-</script>
+    </script>
 
 
 
-    
+
 
 </body>
+
 </html>
