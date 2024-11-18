@@ -375,25 +375,37 @@ const cardContainer = document.querySelector('.card-container');
 
 // Tentamos buscar os produtos aprovados do backend
 fetch("http://localhost:5000/produto/aprovados")
-    .then((response) => response.json()) // Converte a resposta para JSON
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Erro na resposta da API");
+        }
+        return response.json(); // Converte a resposta para JSON
+    })
     .then((produtos) => {
+        const cardContainer = document.getElementById("cardContainer");
         cardContainer.innerHTML = ""; // Limpa o container antes de adicionar novos produtos
 
         // Verifica se a resposta contém produtos
         if (produtos.length > 0) {
             produtos.forEach((produto) => {
+                // Cria o elemento do card
                 const card = document.createElement("div");
                 card.classList.add("card");
+                
+                // Cria o conteúdo HTML do card
                 card.innerHTML = `
-                    <img src="../img/shampooSeda.avif" alt="${produto.nome_produto}">
+                    <img src="${produto.imagem ? produto.imagem : '../img/shampooSeda.avif'}" alt="${produto.nome_produto}">
                     <h2>${produto.nome_produto}</h2>
                     <p>${produto.descricao}</p>
                     <a href="#" class="button">Visualizar Produto</a>
                 `;
+
+                // Adiciona o card ao container
                 cardContainer.appendChild(card);
             });
         } else {
             console.log("Nenhum produto aprovado encontrado no servidor.");
+            cardContainer.innerHTML = "<p>Nenhum produto aprovado encontrado.</p>";
         }
     })
     .catch((error) => {

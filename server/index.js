@@ -61,13 +61,14 @@ app.get("/produto/ultimo", (req, res) => {
 
 
 
-app.get("/produto/aprovados", (req, res) => {
-  const sql = "SELECT * FROM tbl_produto WHERE status = 1";
-
+// Sua rota para buscar produtos aprovados
+app.get('/produto/aprovados', (req, res) => {
+  const sql = 'SELECT * FROM tbl_produto WHERE status = 1';
+  
   conn.query(sql, (erro, resultados) => {
     if (erro) {
-      console.log(erro);
-      res.status(500).json({ erro: "Erro ao buscar produtos aprovados" });
+      console.error('Erro ao buscar produtos aprovados:', erro);
+      res.status(500).json({ erro: 'Erro ao buscar produtos aprovados' });
     } else {
       res.status(200).json(resultados);
     }
