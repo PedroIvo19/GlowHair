@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-visualizar Imagem</title>
+    <style>
+        .image-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        #preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-upload-container">
+        <h2>Pré-visualizar Imagem Antes do Envio</h2>
+        <label for="file-input">
+            <img id="preview" src="https://via.placeholder.com/150" alt="Clique para selecionar uma imagem">
+        </label>
+        <input type="file" id="file-input" accept="image/*">
+    </div>
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    preview.src = e.target.result; // Define a imagem carregada como src do preview
+                };
+
+                reader.readAsDataURL(file); // Lê o arquivo como URL
+            }
+        });
+
+        // Para que o clique na imagem abra o seletor de arquivo
+        preview.addEventListener('click', () => {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>

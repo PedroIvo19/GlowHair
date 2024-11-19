@@ -152,7 +152,6 @@ a:hover {
 /*ESTRELAS AVALIAÇÃO*/
 .card {
     width: 250px; /* Largura fixa do card */
-    height: 350px; /* Altura fixa do card */
     padding: 20px;
     border-radius: 15px;
     background-color: #D2A48A; /* Cor de fundo semelhante ao da imagem */
@@ -337,6 +336,9 @@ header nav {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Responsividade */

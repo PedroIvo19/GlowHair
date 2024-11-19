@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mascara Elseve Reparação Total</title>
+    <title>Detalhes do Produto</title>
     <link rel="stylesheet" href="produto.css">
+    <link rel="stylesheet" href="/main.css">
+
 </head>
 <body>
     <!-- Botão de voltar -->
@@ -14,109 +16,158 @@
     <div class="main-container">
         <!-- Imagem do Produto -->
         <div class="product-image">
-            <img src="../img/mascara-elseve.webp" alt="Máscara Elseve">
+            <img id="product-image" src="" alt="Imagem do Produto">
         </div>
 
         <!-- Informações do Produto -->
-<div class="product-info">
-    <h1>Máscara Elseve Reparação Total</h1>
-    <p class="description">
-        A Máscara Elseve Reparação Total é formulada para restaurar a vitalidade dos cabelos danificados. 
-        Com uma combinação de ingredientes poderosos, essa máscara age profundamente na fibra capilar, 
-        proporcionando nutrição intensa e um brilho radiante. Ideal para cabelos secos e quebradiços, 
-        esta máscara é um passo essencial na sua rotina de cuidados capilares.
-    </p>
+        <div class="product-info">
+            <h1 id="product-title"></h1>
+            <p id="product-description" class="description"></p>
 
-    <!-- Seção de Tabs -->
-    <div class="tabs">
-        <button class="tab-button active" id="benefits-btn">Benefícios</button>
-        <a href="../ComoUsarProduto/comousar.html"><button class="tab-button" id="how-to-use-btn">Como Usar</button></a>
-    </div>
-
-    <!-- Conteúdo dos Tabs -->
-    <div class="tab-content active" id="benefits-content">
-        <h3>Benefícios:</h3>
-        <ul>
-            <li>Restaura cabelos danificados e ressecados.</li>
-            <li>Proporciona nutrição intensa e hidratação.</li>
-            <li>Reduz o frizz e melhora a maleabilidade.</li>
-            <li>Deixa os cabelos macios e brilhantes.</li>
-            <li>Fórmula enriquecida com ingredientes de alta performance.</li>
-        </ul>
-    </div>
-    <div class="tab-content hidden" id="how-to-use-content">
-        <h3>Como Usar:</h3>
-        <p>Para usar a máscara, siga estas etapas:</p>
-        <ol>
-            <li>Aplique nos cabelos molhados, após o shampoo.</li>
-            <li>Deixe agir por 5 minutos.</li>
-            <li>Enxágue abundantemente com água morna.</li>
-            <li>Use uma vez por semana ou conforme necessário.</li>
-        </ol>
-    </div>
-</div>
-
-
-    <!-- Seção de Avaliações -->
-    <div class="reviews-section">
-        <h2>Avaliações dos Consumidores</h2>
-        
-        <!-- Avaliação 1 -->
-        <div class="review-card">
-            <div class="review-details">
-                <strong>Luciana</strong><br>
-                <span>São Paulo</span><br>
-                <span></span>
+            <!-- Seção de Tabs -->
+            <div class="tabs">
+                <button class="tab-button active" id="details-btn">Detalhes do Produto</button>
+                <button class="tab-button" id="how-to-use-btn">Como Usar</button>
             </div>
-            <div class="review-content">
-                <div class="review-header">
-                    <span class="stars">★★★★☆</span>
-                    <span class="review-date"></span>
+            
+            <!-- Conteúdo das Tabs -->
+            <div class="tab-content" id="details-content">
+                <h3>Detalhes do Produto:</h3>
+                <ul>
+                    <li><strong>Loja:</strong> <span id="product-store"></span></li>
+                    <li><strong>Tipo de Cabelo:</strong> <span id="product-hair-type"></span></li>
+                    <li><strong>Problema Resolvido:</strong> <span id="product-problem"></span></li>
+                </ul>
+            </div>
+            
+            <div class="tab-content hidden" id="how-to-use-content">
+                <h3>Como Usar:</h3>
+                <p>Siga estas etapas para usar o produto:</p>
+                <ol>
+                    <li>Aplique o produto nos cabelos úmidos, após lavar com shampoo.</li>
+                    <li>Deixe agir por 5-10 minutos, dependendo da necessidade.</li>
+                    <li>Enxágue abundantemente com água morna.</li>
+                </ol>
+            </div>
+
+            <style>
+                .hidden {
+                    display: none;
+                }
+
+                .tab-button.active {
+                    background-color: #ccc;
+                    font-weight: bold;
+                }
+
+                .tab-content
+                {
+                    display: block;
+                }
+            </style>
+
+        <!-- Seção de Avaliações -->
+        <div class="reviews-section">
+            <h2>Avaliações dos Consumidores</h2>
+            
+            <!-- Avaliação 1 (Estática) -->
+            <div class="review-card">
+                <div class="review-details">
+                    <strong>Luciana</strong><br>
+                    <span>São Paulo</span>
                 </div>
-                <h3>ADOREI A MÁSCARA</h3>
-                <p>Eu adoro essa máscara e uso há mais de 20 anos, porém não me adaptei a esse novo cheiro dele. Por favor, voltem ao cheirinho original dele.</p>
-                <div class="review-recommend">
-                    <span>👍 Sim, eu recomendo esse produto</span>
-                </div>
-                <div class="review-quality">
-                    <span>Qualidade do produto</span>
-                    <div class="quality-bar">
-                        <div class="quality-fill" style="width: 80%;"></div>
+                <div class="review-content">
+                    <div class="review-header">
+                        <span class="stars">★★★★☆</span>
+                        <span class="review-date">01/10/2023</span>
                     </div>
-                    <span class="quality-score">4</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Avaliação 2 -->
-        <div class="review-card">
-            <div class="review-details">
-                <strong>Aline</strong><br>
-                <span>São Paulo</span><br>
-                <span></span>
-            </div>
-            <div class="review-content">
-                <div class="review-header">
-                    <span class="stars">★★★★★</span>
-                    <span class="review-date"></span>
-                </div>
-                <h3>AMO A FÓRMULA ANTIGA</h3>
-                <p>Essa nova fórmula deixa o cabelo amarelado.</p>
-                <div class="review-recommend">
-                    <span>👍 Sim, eu recomendo esse produto</span>
-                </div>
-                <div class="review-quality">
-                    <span>Qualidade do produto</span>
-                    <div class="quality-bar">
-                        <div class="quality-fill" style="width: 100%;"></div>
+                    <h3>ADOREI A MÁSCARA</h3>
+                    <p>Eu adoro essa máscara e uso há mais de 20 anos, porém não me adaptei a esse novo cheiro. Por favor, voltem ao cheirinho original.</p>
+                    <div class="review-recommend">
+                        <span>👍 Sim, eu recomendo esse produto</span>
                     </div>
-                    <span class="quality-score">5</span>
+                </div>
+            </div>
+
+            <!-- Avaliação 2 (Estática) -->
+            <div class="review-card">
+                <div class="review-details">
+                    <strong>Aline</strong><br>
+                    <span>Rio de Janeiro</span>
+                </div>
+                <div class="review-content">
+                    <div class="review-header">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-date">15/09/2023</span>
+                    </div>
+                    <h3>PERFEITO</h3>
+                    <p>Essa máscara é incrível! Meu cabelo ficou macio e brilhoso.</p>
+                    <div class="review-recommend">
+                        <span>👍 Sim, eu recomendo esse produto</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Script JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        async function carregarProduto() {
+            const params = new URLSearchParams(window.location.search);
+            const idProduto = params.get('id');
+
+            if (!idProduto) {
+                document.querySelector('.main-container').innerHTML = "<p>Produto não encontrado.</p>";
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/produto/${idProduto}`);
+                if (!response.ok) throw new Error("Erro ao buscar produto: " + response.status);
+
+                const produto = await response.json();
+                exibirProduto(produto);
+            } catch (error) {
+                console.error("Erro ao carregar produto:", error);
+                document.querySelector('.main-container').innerHTML = "<p>Erro ao carregar os detalhes do produto.</p>";
+            }
+        }
+
+        function exibirProduto(produto) {
+            document.getElementById('product-image').src = produto.imagem || '../img/default.jpg';
+            document.getElementById('product-title').textContent = produto.nome_produto;
+            document.getElementById('product-description').textContent = produto.descricao;
+            document.getElementById('product-store').textContent = produto.nome_loja || "Não especificado";
+            document.getElementById('product-hair-type').textContent = produto.tipo_cabelo || "Geral";
+            document.getElementById('product-problem').textContent = produto.problema || "Não especificado";
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarProduto);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsBtn = document.getElementById('details-btn');
+            const howToUseBtn = document.getElementById('how-to-use-btn');
+            const detailsContent = document.getElementById('details-content');
+            const howToUseContent = document.getElementById('how-to-use-content');
+
+            // Função para alternar entre abas
+            function switchTab(activeButton, activeContent, inactiveButton, inactiveContent) {
+                activeButton.classList.add('active');
+                inactiveButton.classList.remove('active');
+                activeContent.classList.remove('hidden');
+                inactiveContent.classList.add('hidden');
+            }
+
+            // Eventos de clique para alternar
+            detailsBtn.addEventListener('click', () => {
+                switchTab(detailsBtn, detailsContent, howToUseBtn, howToUseContent);
+            });
+
+            howToUseBtn.addEventListener('click', () => {
+                switchTab(howToUseBtn, howToUseContent, detailsBtn, detailsContent);
+            });
+        });
+    </script>
 </body>
 </html>
