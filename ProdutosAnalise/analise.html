@@ -1,154 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto em Análise</title>
-    <link rel="stylesheet" href="analise.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos Pendentes</title>
 </head>
-
 <body>
-    <div class="container">
-        <a href="../index.html"><button class="voltar">← Voltar</button></a>
-        <h1>Produto em Análise</h1>
-        <div class="content">
-            <div class="image-section">
-                <img src="../img/morte.png" alt="Imagem do Produto" id="productImage">
-            </div>
-            <div class="info-section">
-                <div class="field">
-                    <label>Nome Produto:</label>
-                    <input type="text" readonly id="nomeProduto">
-                </div>
-                <div class="field">
-                    <label>Nome da Loja:</label>
-                    <input type="text" readonly id="nomeLoja">
-                </div>
-                <div class="field">
-                    <label>Descrição:</label>
-                    <input type="text" readonly id="descricaoProduto">
-                </div>
-                <div class="field">
-                    <label>Problema do Cabelo:</label>
-                    <input type="text" readonly id="problemaCabelo">
-                </div>
-                <div class="field">
-                    <label>Tipo de Cabelo:</label>
-                    <input type="text" readonly id="tipoCabelo">
-                </div>
-                <div class="field">
-                    <label>Benefícios:</label>
-                    <textarea readonly id="beneficios"></textarea>
-                </div>
-                <div class="field">
-                    <label>Como usar:</label>
-                    <textarea readonly id="comoUsar"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="buttons">
-            <button class="approve">Aprovar</button>
-            <button class="reject" id="recusarBtn">Recusar</button>
-        </div>
+  <h1>Produtos Pendentes</h1>
+  <div id="produtos-container"></div>
 
-        <script>
+  <script>
+    // Função para buscar os produtos pendentes
+    async function fetchPendentes() {
+      try {
+        const response = await fetch('http://localhost:5000/produto/pendentes'); // Rota que retorna os produtos pendentes
+        const produtos = await response.json();
 
-            function limparCampos() {
-                document.getElementById("productImage").src = ""; // Limpa a imagem
-                document.getElementById("nomeProduto").value = "";
-                document.getElementById("nomeLoja").value = "";
-                document.getElementById("descricaoProduto").value = "";
-                document.getElementById("problemaCabelo").value = "";
-                document.getElementById("tipoCabelo").value = "";
-                document.getElementById("beneficios").value = "";
-                document.getElementById("comoUsar").value = "";
-            }
+        // Atualiza o DOM com os produtos
+        const container = document.getElementById('produtos-container');
+        container.innerHTML = ''; // Limpa o container antes de renderizar
 
-            // Adiciona o evento de clique para o botão "Recusar"
-            document.getElementById("recusarBtn").addEventListener("click", function () {
-                limparCampos();
-                alert("Formulário limpo!"); // Mensagem de confirmação
-            });
+        produtos.forEach(produto => {
+          // Cria elementos para exibir informações do produto
+          const produtoDiv = document.createElement('div');
+          produtoDiv.classList.add('produto');
+          produtoDiv.innerHTML = `
+            <h2>${produto.nome_produto}</h2>
+            <p>Descrição: ${produto.descricao}</p>
+            <p>Problema: ${produto.problema}</p>
+            <p>Tipo de cabelo: ${produto.tipo_cabelo}</p>
+            <img src="${produto.imagem}" alt="${produto.nome_produto}" style="max-width: 200px;"/>
+            <button onclick="atualizarStatus(${produto.id_produto}, 'aprovado')">Aprovar</button>
+            <button onclick="atualizarStatus(${produto.id_produto}, 'rejeitado')">Rejeitar</button>
+          `;
+          container.appendChild(produtoDiv);
+        });
+      } catch (erro) {
+        console.error('Erro ao buscar produtos pendentes:', erro);
+      }
+    }
 
+    // Função para atualizar o status de um produto
+    async function atualizarStatus(id, status) {
+      try {
+        const response = await fetch(`http://localhost:5000/produto/${id}/status`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status }), // Envia o novo status
+        });
 
-            fetch('http://localhost:5000/produto/ultimo')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na resposta da API');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Último produto cadastrado:', data); // Verifique se o dado foi retornado corretamente
+        const data = await response.json();
+        if (response.ok) {
+          alert(data.mensagem); // Exibe mensagem de sucesso
+          fetchPendentes(); // Atualiza a lista de pendentes
+        } else {
+          alert(`Erro: ${data.erro}`);
+        }
+      } catch (erro) {
+        console.error('Erro ao atualizar status:', erro);
+      }
+    }
 
-                    if (data) {
-                        // Preencher os campos do formulário com os dados retornados
-                        document.getElementById("nomeProduto").value = data.nome_produto;
-                        document.getElementById("nomeLoja").value = data.nome_loja;
-                        document.getElementById("descricaoProduto").value = data.descricao;
-                        document.getElementById("problemaCabelo").value = data.problema;
-                        document.getElementById("tipoCabelo").value = data.tipo_cabelo;
-                        document.getElementById("beneficios").value = data.beneficios;
-                        document.getElementById("comoUsar").value = data.como_usar;
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar produto:', error); // Verifique erros
-                });
-
-            // Limpar dados ao aprovar ou rejeitar
-            document.querySelector(".approve").addEventListener("click", function () {
-                alert("Produto aprovado!");
-            });
-
-            document.querySelector(".reject").addEventListener("click", function () {
-                // Limpar o formulário quando o produto for rejeitado
-                document.getElementById("productForm").reset(); // Limpa todos os campos do formulário
-                alert("Produto rejeitado. Formulário limpo!");
-            });
-
-
-
-
-
-
-
-            //APROVAR
-            document.querySelector(".approve").addEventListener("click", () => {
-                fetch('http://localhost:5000/produto/aprovar', {
-                    method: 'PUT',
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data); // Mostra a mensagem "Produto aprovado com sucesso"
-                    })
-                    .catch(error => {
-                        console.error('Erro ao aprovar produto:', error);
-                    });
-            });
-
-            //REJEITAR
-            document.querySelector(".reject").addEventListener("click", function () {
-                fetch("http://localhost:5000/produto/rejeitar", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        alert("Produto rejeitado!");
-                        limparCampos();
-                    })
-                    .catch((error) => console.error("Erro ao rejeitar produto:", error));
-            });
-
-
-
-
-
-        </script>
+    // Chama a função para buscar produtos ao carregar a página
+    fetchPendentes();
+  </script>
 </body>
-
 </html>

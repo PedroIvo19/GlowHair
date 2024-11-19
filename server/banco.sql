@@ -28,7 +28,7 @@
     `descricao` LONGTEXT NOT NULL,
     `beneficios` LONGTEXT NULL DEFAULT NULL,
     `como_usar` LONGTEXT NULL DEFAULT NULL,
-    `imagem` VARCHAR(45) NULL,
+    `imagem` VARCHAR(500) NULL,
     `status` VARCHAR(45) NOT NULL,
     `nota` INT(1) NOT NULL,
     `problema` VARCHAR(45) NOT NULL,

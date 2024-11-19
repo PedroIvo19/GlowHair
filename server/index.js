@@ -179,7 +179,7 @@ app.get("/produto/ultimo", (req, res) => {
 
 // Sua rota para buscar produtos aprovados
 app.get('/produto/aprovados', (req, res) => {
-  const sql = 'SELECT * FROM tbl_produto WHERE status = 1';
+  const sql = 'SELECT * FROM tbl_produto WHERE status = \'aprovado\'';
   
   conn.query(sql, (erro, resultados) => {
     if (erro) {
@@ -190,6 +190,22 @@ app.get('/produto/aprovados', (req, res) => {
     }
   });
 });
+
+
+// Sua rota para buscar produtos pendentes
+app.get('/produto/pendentes', (req, res) => {
+  const sql = 'SELECT * FROM tbl_produto WHERE status = \'pendente\'';
+  
+  conn.query(sql, (erro, resultados) => {
+    if (erro) {
+      console.error('Erro ao buscar produtos pendentes:', erro);
+      res.status(500).json({ erro: 'Erro ao buscar produtos pendentes' });
+    } else {
+      res.status(200).json(resultados);
+    }
+  });
+});
+
 
 
 // Sua rota para buscar um produto pelo ID
@@ -210,6 +226,31 @@ app.get('/produto/:id', (req, res) => {
 });
 
 
+app.put('/produto/:id/status', (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  // Validação de status (ajuste opcional)
+  const validStatuses = ['aprovado', 'rejeitado', 'pendente'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ erro: 'Status inválido. Use aprovado, rejeitado ou pendente.' });
+  }
+
+  const sql = 'UPDATE tbl_produto SET status = ? WHERE id_produto = ?';
+
+  conn.query(sql, [status, id], (erro, resultado) => {
+    if (erro) {
+      console.error('Erro ao atualizar status do produto:', erro);
+      return res.status(500).json({ erro: 'Erro ao atualizar status do produto' });
+    }
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ erro: 'Produto não encontrado' });
+    }
+
+    res.status(200).json({ mensagem: `Status do produto atualizado para ${status}` });
+  });
+});
 
 
 // // Aprovar Produto
