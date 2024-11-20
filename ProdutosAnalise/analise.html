@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos Pendentes</title>
+  <link rel="stylesheet" href="analise.css">
 </head>
 <body>
   <h1>Produtos Pendentes</h1>
@@ -30,8 +31,8 @@
             <p>Problema: ${produto.problema}</p>
             <p>Tipo de cabelo: ${produto.tipo_cabelo}</p>
             <img src="${produto.imagem}" alt="${produto.nome_produto}" style="max-width: 200px;"/>
-            <button onclick="atualizarStatus(${produto.id_produto}, 'aprovado')">Aprovar</button>
-            <button onclick="atualizarStatus(${produto.id_produto}, 'rejeitado')">Rejeitar</button>
+            <button style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-right: 5px;"  onclick="atualizarStatus(${produto.id_produto}, 'aprovado')">Aprovar</button>
+            <button style="background-color: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;"  onclick="atualizarStatus(${produto.id_produto}, 'rejeitado')">Rejeitar</button>
           `;
           container.appendChild(produtoDiv);
         });

@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 .container {
@@ -34,7 +35,8 @@ body {
 }
 
 h1 {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 50px;
     text-align: center;
     color: #fff;
     font-size: 28px;

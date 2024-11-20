@@ -17,7 +17,8 @@
         <form id="productForm" style="flex-direction:row !important; width: 100% !important;" enctype="multipart/form-data">
 
         <div class="left-section">
-            <a href="../index.html" class="back-link"><button class="back-btn">Voltar</button></a>
+            <button class="back-btn" onclick="window.location.href='../index.html';">Voltar</button>
+
 
             <div class="image-upload">
                 <label for="file-input">
@@ -40,22 +41,23 @@
                 </div>
             
                 <div class="field">
-                    <label for="problema">Problema do Cabelo:</label>
-                    <select id="problema" name="problema">
-                        <option value="queda">Pontas Danificadas</option>
-                        <option value="oleosidade">Cabelo Oleoso</option>
-                        <option value="ressecamento">Cabelo Poroso</option>
-                        <option value="caspa">Cabelo com Frizz</option>
+                    <label for="problema" style="font-size: 16px; font-weight: bold;">Problema do Cabelo:</label>
+                    <select id="problema" name="problema" style="font-size: 18px; padding: 5px;">
+                        <option value="queda" style="font-size: 20px;">Pontas Danificadas</option>
+                        <option value="oleosidade" style="font-size: 20px;">Cabelo Oleoso</option>
+                        <option value="ressecamento" style="font-size: 20px;">Cabelo Poroso</option>
+                        <option value="caspa" style="font-size: 20px;">Cabelo com Frizz</option>
                     </select>
                 </div>
+                
             
                 <div class="field">
-                    <label for="tipoCabelo">Tipo de Cabelo:</label>
-                    <select id="tipoCabelo" name="tipoCabelo">
-                        <option value="crespo">Cabelo Crespo</option>
-                        <option value="cacheado">Cabelo Cacheado</option>
-                        <option value="ondulado">Cabelo Ondulado</option>
-                        <option value="liso">Cabelo Liso</option>
+                    <label for="tipoCabelo" style="font-size: 16px; font-weight: bold;">Tipo de Cabelo:</label>
+                    <select id="tipoCabelo" name="tipoCabelo" style="font-size: 18px; padding: 5px; width: 100%; border-radius: 5px; border: 1px solid #ccc;">
+                        <option value="crespo" style="font-size: 20px;">Cabelo Crespo</option>
+                        <option value="cacheado" style="font-size: 20px;">Cabelo Cacheado</option>
+                        <option value="ondulado" style="font-size: 20px;">Cabelo Ondulado</option>
+                        <option value="liso" style="font-size: 20px;">Cabelo Liso</option>
                     </select>
                 </div>
                 

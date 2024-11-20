@@ -116,7 +116,7 @@ app.post("/produto/insert", upload.single("imagem"), async (req, res) => {
       req.body.descricaoProduto,
       req.body.beneficios,
       req.body.comoUsar,
-      1, // status inicial
+      'pendente', // status inicial
       0, // nota inicial
       req.body.problema,
       req.body.tipoCabelo,
