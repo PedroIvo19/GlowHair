@@ -65,10 +65,7 @@ a {
     border-radius: 5px;
 }
 
-a:hover {
-    color: lightgray;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+
 
 .sobre {
     padding: 50px 20px;
@@ -343,7 +340,7 @@ p {
   width: 100%; /* Agora ocupa a largura total da tela */
   text-align: center;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ 
 }
 
 .banner {
@@ -373,7 +370,7 @@ p {
 }
 
 .btn:hover {
-  background-color: #3b2418;
+  background-color: #3a1d10 !important;
 }
 
 
@@ -448,7 +445,6 @@ p {
 }
 
 
-/*RESPONSIVIDADE */
 
 /* Responsividade */
 @media (max-width: 768px) {
