@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos Aprovados</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <style>
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    button {
+      margin-right: 10px;
+    }
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  margin: 0;
+  font-size: 2rem;
+}
+
+#products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Largura dos produtos */
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product p {
+  margin: 8px 0;
+}
+
+strong {
+  color: #4CAF50;
+}
+
+.buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:first-of-type {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button:last-of-type {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:focus {
+  outline: none;
+}
+  </style>
+</head>
+<body>
+    <link rel="icon" href="../img/logo.ico" type="image/x-icon">
+  <h1>Produtos Aprovados</h1>
+  <div id="products"></div>
+
+  <script>
+    async function fetchApprovedProducts() {
+      try {
+        const response = await fetch('http://localhost:5000/produto/aprovados');
+        if (!response.ok) {
+          throw new Error('Erro ao buscar produtos aprovados');
+        }
+
+        const products = await response.json();
+        displayProducts(products);
+      } catch (error) {
+        console.error(error);
+        alert('Erro ao carregar os produtos aprovados.');
+      }
+    }
+
+    function displayProducts(products) {
+      const productsContainer = document.getElementById('products');
+      productsContainer.innerHTML = ''; // Limpa o container antes de renderizar os produtos
+
+      products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'product';
+        productDiv.innerHTML = `
+          <p><strong>ID:</strong> ${product.id_produto}</p>
+          <p><strong>Nome:</strong> ${product.nome_produto}</p>
+          <p><strong>Loja:</strong> ${product.nome_loja}</p>
+          <p><strong>Descrição:</strong> ${product.descricao}</p>
+          <div class="buttons">
+            <button onclick="editProduct(${product.id_produto})">Editar</button>
+            <button onclick="deleteProduct(${product.id_produto})">Excluir</button>
+          </div>
+        `;
+        productsContainer.appendChild(productDiv);
+      });
+    }
+
+    async function deleteProduct(id) {
+  const confirmDelete = confirm(`Tem certeza que deseja excluir o produto com ID ${id}?`);
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`http://localhost:5000/produto/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        alert('Produto não encontrado.');
+      } else {
+        throw new Error('Erro ao excluir o produto.');
+      }
+    } else {
+      alert('Produto excluído com sucesso!');
+      fetchApprovedProducts(); // Recarrega os produtos
+    }
+  } catch (error) {
+    console.error(error);
+    alert('Erro ao excluir o produto.');
+  }
+}
+
+
+
+    function editProduct(id) {
+      const newName = prompt('Digite o novo nome do produto:');
+      if (!newName) return;
+
+      const newDescription = prompt('Digite a nova descrição do produto:');
+      if (!newDescription) return;
+
+      fetch(`http://localhost:5000/produto/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome_produto: newName,
+          descricao: newDescription,
+        }),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro ao editar o produto');
+          }
+          alert('Produto editado com sucesso!');
+          fetchApprovedProducts(); // Recarrega a lista de produtos
+        })
+        .catch(error => {
+          console.error(error);
+          alert('Erro ao editar o produto.');
+        });
+    }
+
+    // Carrega os produtos ao abrir a página
+    fetchApprovedProducts();
+  </script>
+</body>
+</html>

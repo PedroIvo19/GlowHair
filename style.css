@@ -387,9 +387,7 @@ p {
 }
 
 .footer-content {
-    display: flex; /* Flexbox para layout em linha */
-    justify-content: space-around; /* Espaço entre as seções */
-    flex-wrap: wrap; /* Permite que as seções quebrem para a próxima linha em telas pequenas */
+  flex-direction: column;
 }
 
 .footer-section {
@@ -443,6 +441,7 @@ p {
 .footer-bottom p {
     margin: 0; /* Remove margem */
 }
+
 
 
 

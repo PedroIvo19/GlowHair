@@ -127,3 +127,44 @@ textarea {
     background-color: #ff8a00;
     color: #fff;
 }
+
+
+
+.produto {
+    background-color: #ca813d; /* Cor de fundo suave */
+    padding: 20px;
+    margin-bottom: 20px; /* Espaçamento entre os produtos */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar os produtos */
+    border: 1px solid #ddd; /* Borda fina para separação */
+  }
+  
+  .produto img {
+    max-width: 200px;
+    border-radius: 8px; /* Arredondar bordas da imagem */
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px;
+    border: none;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  button:first-of-type {
+    background-color: #4CAF50; /* Botão de Aprovar */
+    color: white;
+  }
+  
+  button:last-of-type {
+    background-color: #f44336; /* Botão de Rejeitar */
+    color: white;
+  }
+  

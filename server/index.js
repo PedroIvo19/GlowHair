@@ -180,7 +180,7 @@ app.get("/produto/ultimo", (req, res) => {
 // Sua rota para buscar produtos aprovados
 app.get('/produto/aprovados', (req, res) => {
   const sql = 'SELECT * FROM tbl_produto WHERE status = \'aprovado\'';
-  
+
   conn.query(sql, (erro, resultados) => {
     if (erro) {
       console.error('Erro ao buscar produtos aprovados:', erro);
@@ -192,10 +192,100 @@ app.get('/produto/aprovados', (req, res) => {
 });
 
 
+
+// Rota para atualizar um produto com base nos novos campos da tabela
+app.put('/produto/:id', (req, res) => {
+  const id = req.params.id; // ID do produto da rota
+  const {
+    nome_produto,
+    nome_loja,
+    descricao,
+    beneficios,
+    como_usar,
+    status,
+    nota,
+    problema,
+    tipo_cabelo
+  } = req.body; // Dados enviados no corpo da requisição
+
+  // Query para atualizar os campos na tabela
+  const sql = `
+    UPDATE tbl_produto
+    SET 
+      nome_produto = ?,
+      nome_loja = ?,
+      descricao = ?,
+      beneficios = ?,
+      como_usar = ?,
+      status = ?,
+      nota = ?,
+      problema = ?,
+      tipo_cabelo = ?
+    WHERE id = ?
+  `;
+
+  // Executando a query
+  conn.query(
+    sql,
+    [
+      nome_produto,
+      nome_loja,
+      descricao,
+      beneficios || null, // Define como NULL se não for enviado
+      como_usar || null,
+      status,
+      nota,
+      problema,
+      tipo_cabelo,
+      id
+    ],
+    (erro, resultados) => {
+      if (erro) {
+        console.error('Erro ao atualizar produto:', erro);
+        res.status(500).json({ erro: 'Erro ao atualizar produto' });
+      } else if (resultados.affectedRows === 0) {
+        res.status(404).json({ mensagem: 'Produto não encontrado' });
+      } else {
+        res.status(200).json({ mensagem: 'Produto atualizado com sucesso' });
+      }
+    }
+  );
+});
+
+
+app.delete('/produto/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  console.log(`ID recebido: ${id}`); // Log do ID recebido
+
+  const sql = 'DELETE FROM tbl_produto WHERE id_produto = ?';
+
+  conn.query(sql, [id], (erro, resultados) => {
+      if (erro) {
+          console.error('Erro ao excluir produto:', erro);
+          res.status(500).json({ erro: 'Erro ao excluir produto' });
+      } else {
+          console.log(`Linhas afetadas: ${resultados.affectedRows}`);
+          if (resultados.affectedRows === 0) {
+              res.status(404).json({ mensagem: 'Produto não encontrado' });
+          } else {
+              res.status(200).json({ mensagem: 'Produto excluído com sucesso' });
+          }
+      }
+  });
+});
+
+
+
+
+
+
+
+
+
 // Sua rota para buscar produtos pendentes
 app.get('/produto/pendentes', (req, res) => {
   const sql = 'SELECT * FROM tbl_produto WHERE status = \'pendente\'';
-  
+
   conn.query(sql, (erro, resultados) => {
     if (erro) {
       console.error('Erro ao buscar produtos pendentes:', erro);
@@ -279,7 +369,7 @@ app.put(" ", (req, res) => {
     res.status(200).json("Produto rejeitado com sucesso");
   });
 });
- 
+
 
 
 
@@ -455,7 +545,7 @@ app.post("/avaliacao/insert", (req, res) => {
   const titulo = req.body.titulo;
   const comentario = req.body.comentarios;
   const qtde_qualidade = req.body.qtdeQualidade;
-  
+
 
   const sql = `INSERT INTO tbl_avaliacao (qtde_avaliacao, titulo, comentario, qtde_qualidade) VALUES ('${qtde_avaliacao}','${titulo}','${comentario}','${qtde_qualidade}')`;
 

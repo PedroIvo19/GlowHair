@@ -28,7 +28,8 @@
         produtos.forEach(produto => {
           // Cria elementos para exibir informações do produto
           const produtoDiv = document.createElement('div');
-          produtoDiv.classList.add('produto');
+          produtoDiv.classList.add('produto'); // Aplica a classe que define o estilo de cada produto
+          produtoDiv.classList.add('produto');      
           produtoDiv.innerHTML = `
             <h2>${produto.nome_produto}</h2>
             <p>Descrição: ${produto.descricao}</p>
