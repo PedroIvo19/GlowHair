@@ -15,13 +15,17 @@
     <header>
         <nav>
             <ul id="nav-links">
-                <li><a href="./CuidadoCabelo.html">Produtos</a></li>
+                <li><a href="../CuidadosCabelo/CuidadoCabelo.html">Produtos</a></li>
                 <li><a href="../TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
                 <li><a href="../ProblemasCabelo/problemas.html">Problemas do Cabelo</a></li>
-                <li class="logo"><a href="../index.html"><img src="../img/logo.svg" alt="Logo"></a></li>
-                <li id="login-btn"><a href="../Cliente/cadastro-login.html">Login</a></li>
-                <li id="register-btn"><a href="./Cliente/cadastro-login.html">Registrar</a></li>
-                <li id="profile-btn" style="display: none;"><a href="./perfil.html">Perfil</a></li>
+                <li class="logo">
+                    <a href="../index.html">
+                        <img src="../img/logo.svg" alt="Logo">
+                    </a>
+                </li>
+                <li id="loginLink"><a href="../Cliente/cadastro-login.html">Login</a></li>
+                <li id="registerLink"><a href="../Cliente/cadastro-login.html">Registrar</a></li>
+                <li id="profileLink" style="display: none;"><a href="/Perfil/perfil.html">Perfil</a></li>
             </ul>
         </nav>
     </header>
@@ -147,7 +151,7 @@
                 registerLink.style.display = 'none';
 
                 // Exibe o link de perfil com o nome do usuário
-                profileLink.innerHTML = `<a href="./Perfil/perfil.html">${userName}</a>`;
+                profileLink.innerHTML = `<a href="/Perfil/perfil.html">${userName}</a>`;
                 profileLink.style.display = 'block';
                 console.log("Usuário logado: ", userName);
             }

@@ -18,20 +18,16 @@
             <ul id="nav-links">
                 <li><a href="../CuidadosCabelo/CuidadoCabelo.html">Produtos</a></li>
                 <li><a href="../TipoCabelo/tipocabelo.html">Tipos de Cabelo</a></li>
-                <li><a href="./problemas.html">Problemas do Cabelo</a></li>
-    
+                <li><a href="../ProblemasCabelo/problemas.html">Problemas do Cabelo</a></li>
                 <li class="logo">
                     <a href="../index.html">
                         <img src="../img/logo.svg" alt="Logo">
                     </a>
                 </li>
-                
-                <li><a href="../Cliente/cadastro-login.html">Login</a></li>
-                <li><a href="../Cliente/cadastro-login.html">Registrar</a></li>
-                <li style="display: none;"><a href="./perfil.html">Perfil</a></li>
-                </div>               
+                <li id="loginLink"><a href="../Cliente/cadastro-login.html">Login</a></li>
+                <li id="registerLink"><a href="../Cliente/cadastro-login.html">Registrar</a></li>
+                <li id="profileLink" style="display: none;"><a href="/Perfil/perfil.html">Perfil</a></li>
             </ul>
-         
         </nav>
     </header>
 
@@ -147,7 +143,27 @@
     </footer>
     
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('loginLink');
+            const registerLink = document.getElementById('registerLink');
+            const profileLink = document.getElementById('profileLink');
 
+            // Verifica se o usuário está logado
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+            const userName = sessionStorage.getItem('userName');  // Recupera o nome do usuário
+
+            if (isLoggedIn) {
+                loginLink.style.display = 'none';
+                registerLink.style.display = 'none';
+
+                // Exibe o link de perfil com o nome do usuário
+                profileLink.innerHTML = `<a href="/Perfil/perfil.html">${userName}</a>`;
+                profileLink.style.display = 'block';
+                console.log("Usuário logado: ", userName);
+            }
+        });
+</script>
 
 
 </body>
